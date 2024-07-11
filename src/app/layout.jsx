@@ -31,7 +31,7 @@ export default async function RootLayout({ children }) {
           settings &&
           <div className='h-dvh flex flex-col'>
             <Header header={settings.header} iconHeaderImageUrl={settings.iconHeaderImageUrl} />
-            <div className='w-dwh mx-auto grid h-full'>
+            <div className='w-dvw flex h-full'>
               <Suspense fallback={<Loading />}>
                 <ErrorBoundary fallback={<NotFound />}>{children}</ErrorBoundary>
               </Suspense>

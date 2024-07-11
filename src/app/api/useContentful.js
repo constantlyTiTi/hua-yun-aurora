@@ -39,25 +39,23 @@ const getTeams = () => {
     }).then(res => ({data:res})).catch(err =>  ({error:err}))
 }
 
-const getTeamByTeamName = (teamNameShort) => {
+const getTeamByTeamName = (teamId) => {
     const client = useContentful()
 
-    return client.getEntries({
-        content_type:"teams",
-        select:"fields",
-        "fileds.teamNameShort":teamNameShort
-    }).then(res => ({data:res})).catch(err =>  ({error:err}))
+    return client.getEntry(teamId).then(res => (JSON.stringify({data:res}))).catch(err => JSON.stringify({error:err}))
 }
 
 const getActivities = (teamNameShort) => {
     const client = useContentful()
 
+    console.log("abcded")
+
     return client.getEntries({
         content_type:"activities",
         select:"fields",
         order:"fields.dateTime",
-        "fields.teamNameShort":teamNameShort
-    }).then(res => ({data:res})).catch(err =>  ({error:err}))
+        "fields.teamNameShort[match]":teamNameShort
+    }).then(res => ({data:console.log("res",res)})).catch(err =>  ({error:JSON.stringify(err)}))
 }
 
 const getActivitiesByName = (activityName) => {
@@ -66,7 +64,7 @@ const getActivitiesByName = (activityName) => {
     return client.getEntries({
         content_type:"activities",
         select:"fields",
-        "fields.name":activityName
+        "fields.name[match]":activityName
     }).then(res => ({data:res})).catch(err =>  ({error:err}))
 }
 

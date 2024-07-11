@@ -1,7 +1,11 @@
 import React from "react";
 
-const Page = () =>{
-    return <div className="w-full flex-1">adbcd</div>
+const Page = ({team}) =>{
+    return (
+    <p>adc</p>
+
+    )
+
 }
 
 export default Page

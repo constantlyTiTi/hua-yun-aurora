@@ -6,10 +6,6 @@ const Introduction = ({ introduction }) => {
 
     const richText = documentToReactComponents(introduction.groupDescription)
 
-    const checkDetails = ()=>{
-
-    }
-
     return (
         <div className="grid md:grid-cols-2 w-dvw gap-4">
             <div className="lg:w-dv-60 md:w-dv-50">

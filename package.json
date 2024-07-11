@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.22.1",
+    "@nextui-org/accordion": "^2.0.35",
+    "@nextui-org/system": "^2.2.2",
+    "@nextui-org/theme": "^2.2.6",
     "contentful": "^10.12.8",
+    "framer-motion": "^11.3.2",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18"
