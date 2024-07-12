@@ -14,8 +14,8 @@ export default async function ActivityLayout({
         {/* Include shared UI here e.g. a header or sidebar */}
         {sidebarItems?.data && <Sidebar teams={sidebarItems.data.items}/>}
    
-        <div class="sm:ml-64 p-4">
-        <div class="border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+        <div className="sm:ml-64 p-4">
+        <div className="border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
         {children}
         </div>
         </div>

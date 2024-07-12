@@ -47,8 +47,8 @@ const Header = ({ header, iconHeaderImageUrl }) => {
     return (headerItems && 
         <>
             <header className='sticky top-0 z-50 bg-white max-h-32 w-dvw'>
-                <nav className="mx-auto grid grid-cols-2 justify-initial max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-                    <div className="w-8" ref={dropDownRef}>
+                <nav className="mx-auto flex justify-initial items-center justify-between p-6 lg:px-8" aria-label="Global">
+                    <div className="flex-none w-20" ref={dropDownRef}>
                     <img className="h-8 w-auto" src={iconHeaderImageUrl} alt="website icon" onClick = {()=>setIsDisplayDropDown(!isDisplayDropDown)} />
                         <div id="dropdown" className={`absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700 ${isDisplayDropDown ? "block" : "hidden"}`}>
                         <div onClick={()=> onclick(teamNameShort,teamId)} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">    
@@ -57,7 +57,7 @@ const Header = ({ header, iconHeaderImageUrl }) => {
                         </div>
                     </div>
 
-                    <div className="justify-center">
+                    <div className="flex-1 justify-center w-70">
                         <div className="relative justify-none">
                             <h5 className="text-lg font-semibold leading-6 text-gray-900">{header}</h5>
                         </div>
