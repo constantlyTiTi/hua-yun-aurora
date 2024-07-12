@@ -5,7 +5,7 @@ const ActivityDetails = ({ title, dateTime, description, picsUrls, videoUrls }) 
 console.log("videoUrls",videoUrls)
 
     return (
-        <div className="text-center grid gap-3 p-3 w-full">
+        <div className="text-left grid gap-3 p-3 w-full">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>
             <p className="text-lg text-gray-900 dark:text-white">{`${dateTime.split("T")[0]} ${dateTime.split("T")[1]}`}</p>
             <div className="px-3"> {description}</div>
