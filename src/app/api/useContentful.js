@@ -39,10 +39,14 @@ const getTeams = () => {
     }).then(res => (JSON.stringify({data:res}))).catch(err =>  JSON.stringify({error:err}))
 }
 
-const getTeamByTeamId = (teamId) => {
+const getTeamByTeamId = (teamNameShort) => {
     const client = useContentful()
 
-    return client.getEntry(teamId).then(res => (JSON.stringify({data:res}))).catch(err => JSON.stringify({error:err}))
+    return client.getEntries({
+        content_type:"teams",
+        select:"fields",
+        "fields.teamNameShort[match]":teamNameShort
+    }).then(res => (JSON.stringify({data:res}))).catch(err => JSON.stringify({error:err}))
 }
 
 const getActivities = (teamNameShort) => {

@@ -51,7 +51,7 @@ const Header = ({ header, iconHeaderImageUrl }) => {
                     <div className="flex-none w-20" ref={dropDownRef}>
                     <img className="h-8 w-auto" src={iconHeaderImageUrl} alt="website icon" onClick = {()=>setIsDisplayDropDown(!isDisplayDropDown)} />
                         <div id="dropdown" className={`absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700 ${isDisplayDropDown ? "block" : "hidden"}`}>
-                        <div onClick={()=> onclick(teamNameShort,teamId)} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">    
+                        <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">    
                         <a href="/" key='header-home' className="block items-center ms-3" >Home</a></div>
                         {headerItems?.map(t => <SidebarItem onclick={sidebarItemClick} key={`headerMenu-${t.fields.teamNameShort}`} teamNameShort={t.fields.teamNameShort} teamNameFull={t.fields.teamNameFull} teamId={t.sys.id} />)}
                         </div>

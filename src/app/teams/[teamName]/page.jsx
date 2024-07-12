@@ -1,13 +1,14 @@
 'use client'
 import React, { useContext,useState, useEffect  } from "react";
-import { getActivities, getTeamByTeamId } from "@/app/api/useContentful";
+import { getActivities, getTeamByTeamId as getTeamByTeamName } from "@/app/api/useContentful";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { SearchResultContext } from "@/app/context/createContext";
 import ActivityCard from "@/app/components/ActivityCard";
+import { useSearchParams } from 'next/navigation'
 
-const TeamPage = () => {
+const TeamPage = ({params}) => {
 
-    const { searchItem } = useContext(SearchResultContext)
+    const searchItem = params.teamName
 
     const [team, setTeam] = useState(null)
 
@@ -16,15 +17,15 @@ const TeamPage = () => {
 
     useEffect(() => {
 
-        searchItem && getTeamByTeamId(searchItem.teamId).then((res) => {
+        searchItem && getTeamByTeamName(searchItem).then((res) => {
             const jsonObj = JSON.parse(res)
-            setTeam(jsonObj.data.fields)
+
+            jsonObj.data.items.length > 0 && setTeam(jsonObj.data.items[0].fields)
 
         }).catch(error => console.log(error))
 
-        searchItem && getActivities(searchItem.teamName).then((res) => {
+        searchItem && getActivities(searchItem).then((res) => {
             const jsonObj = JSON.parse(res)
-            console.log(jsonObj.data.items)
             setActivities(jsonObj.data.items)
 
         }).catch(error => console.log(error))
@@ -41,7 +42,7 @@ const TeamPage = () => {
                     </AccordionItem>
                     <AccordionItem key="2" aria-label="Team Leaders" title="Team Leaders">
                         <div key="acc-2" className="px-2 grid w-full grid-cols-2 md:grid-cols-5">
-                            {team.teamLeaders.map(name => <div key={`leader-${name}`}>{name}</div>)}
+                            {team.teamLeaders?.map(name => <div key={`leader-${name}`}>{name}</div>)}
                         </div>
 
                     </AccordionItem>

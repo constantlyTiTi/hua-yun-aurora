@@ -12,7 +12,10 @@ const Sidebar = ({ teams }) => {
     const router = useRouter()
 
     const sidebarItemClick = (teamName, teamId) => {
-        router.push(`/teams/${teamName}`)
+        router.push({
+            pathname: `/teams/[teamName]?team_id=${teamId}`,
+            query: { team_name:teamName },
+          })
         setSearchItem({
             "teamName": teamName,
             "teamId": teamId

@@ -19,9 +19,6 @@ const Page = ()=> {
         activityId && getActivitiesById(activityId).then(res=>{
 
             const response = JSON.parse(res).data.fields
-
-            console.log(JSON.parse(res).data)
-
             setRichText(documentToReactComponents(response.description))
 
             setActivity(response)
