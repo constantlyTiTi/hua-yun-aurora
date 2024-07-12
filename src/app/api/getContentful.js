@@ -1,7 +1,7 @@
 'use server'
 import { createClient } from "contentful"
 
-const useContentful = () => {
+const connectContentful = () => {
 
     return createClient({
         space: process.env.NEXT_SPACE_ID,
@@ -12,7 +12,7 @@ const useContentful = () => {
 }
 
 const getWebSetting = () => {
-    const client = useContentful()
+    const client = connectContentful()
 
     return client.getEntries({
         content_type:"websiteSetting",
@@ -21,7 +21,7 @@ const getWebSetting = () => {
 }
 
 const getIntroduction = () => {
-    const client = useContentful()
+    const client = connectContentful()
 
     return client.getEntries({
         content_type:"introduction",
@@ -30,7 +30,7 @@ const getIntroduction = () => {
 }
 
 const getTeams = () => {
-    const client = useContentful()
+    const client = connectContentful()
 
     return client.getEntries({
         content_type:"teams",
@@ -40,7 +40,7 @@ const getTeams = () => {
 }
 
 const getTeamByTeamName = (teamNameShort) => {
-    const client = useContentful()
+    const client = connectContentful()
 
     return client.getEntries({
         content_type:"teams",
@@ -50,7 +50,7 @@ const getTeamByTeamName = (teamNameShort) => {
 }
 
 const getActivities = (teamNameShort) => {
-    const client = useContentful()
+    const client = connectContentful()
 
     console.log("teamNameShort")
 
@@ -63,7 +63,7 @@ const getActivities = (teamNameShort) => {
 }
 
 const getActivityById = (activityId) => {
-    const client = useContentful()
+    const client = connectContentful()
 
     console.log(activityId)
 
@@ -71,7 +71,7 @@ const getActivityById = (activityId) => {
 }
 
 const getNews = ()=>{
-    const client = useContentful()
+    const client = connectContentful()
 
     return client.getEntries({
         content_type:"news",
