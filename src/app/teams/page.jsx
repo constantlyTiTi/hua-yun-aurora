@@ -26,17 +26,9 @@ const Page = () => {
                         const richText = documentToReactComponents(f.fields.news)
 
                         return <AccordionItem key={`news-${index}`} aria-label={f.fields.shortTitle} title={f.fields.shortTitle}>
-                            <h2>{f.fields.shortTitle}</h2>
-                            <div>{f.fields.dateTime}</div>
-                            <div>{richText}</div>
-                            
+                            <div className="my-2">{`${f.fields.dateTime.split("T")[0]} ${f.fields.dateTime.split("T")[1]}`}</div>
+                            <div>{richText}</div>                            
                             </AccordionItem>
-
-                        // const richText = documentToReactComponents(f.fields.news)
-
-                        // return <AccordionItem key={`news-${index}`} aria-label={f.fields.shortTitle} title={f.fields.shortTitle}>
-                        //     {richText}
-                        // </AccordionItem>
 
                     })
                 }

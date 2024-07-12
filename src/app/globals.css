@@ -33,5 +33,9 @@ body {
 }
 
 #teamDetailCollapse button {
-  font-weight: bold;
+  font-weight: 600;
+}
+
+#newsDetailCollapse button {
+  font-weight: 600;
 }
