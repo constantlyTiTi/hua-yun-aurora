@@ -7,19 +7,13 @@ import { useRouter } from 'next/navigation'
 
 const Sidebar = ({ teams }) => {
 
-    const { setSearchItem } = useContext(SearchResultContext)
-
     const router = useRouter()
 
-    const sidebarItemClick = (teamName, teamId) => {
+    const sidebarItemClick = (teamName) => {
         router.push({
-            pathname: `/teams/[teamName]?team_id=${teamId}`,
+            pathname: `/teams/[teamName]`,
             query: { team_name:teamName },
           })
-        setSearchItem({
-            "teamName": teamName,
-            "teamId": teamId
-        })
     }
 
     return (
@@ -29,7 +23,7 @@ const Sidebar = ({ teams }) => {
             <div className=" px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800"> */}
                 <ul className="space-y-2 font-medium">
                     {
-                        teams?.map(t => <SidebarItem onclick={sidebarItemClick} key={`sidemenue-${t.fields.teamNameShort}`} teamNameShort={t.fields.teamNameShort} teamNameFull={t.fields.teamNameFull} teamId={t.sys.id} />)
+                        teams?.map(t => <SidebarItem onclick={sidebarItemClick} key={`sidemenue-${t.sys.id}`} teamNameShort={t.fields.teamNameShort} teamNameFull={t.fields.teamNameFull}/>)
                     }
                 </ul>
             </div>

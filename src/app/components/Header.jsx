@@ -21,12 +21,8 @@ const Header = ({ header, iconHeaderImageUrl }) => {
         getTeams().then(res=> setHeaderItems(JSON.parse(res).data.items)).catch(err=>console.log(err))
     },[])
 
-    const sidebarItemClick = (teamName, teamId) => {
+    const sidebarItemClick = (teamName) => {
         router.push(`/teams/${teamName}`)
-        setSearchItem({
-            "teamName": teamName,
-            "teamId": teamId
-        })
         setIsDisplayDropDown(false)
     }
 
@@ -53,7 +49,7 @@ const Header = ({ header, iconHeaderImageUrl }) => {
                         <div id="dropdown" className={`absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700 ${isDisplayDropDown ? "block" : "hidden"}`}>
                         <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">    
                         <a href="/" key='header-home' className="block items-center ms-3" >Home</a></div>
-                        {headerItems?.map(t => <SidebarItem onclick={sidebarItemClick} key={`headerMenu-${t.fields.teamNameShort}`} teamNameShort={t.fields.teamNameShort} teamNameFull={t.fields.teamNameFull} teamId={t.sys.id} />)}
+                        {headerItems?.map(t => <SidebarItem onclick={sidebarItemClick} key={`headerMenu-${t.sys.id}`} teamNameShort={t.fields.teamNameShort} teamNameFull={t.fields.teamNameFull}/>)}
                         </div>
                     </div>
 

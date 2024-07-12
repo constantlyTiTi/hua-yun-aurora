@@ -2,8 +2,6 @@ import React from "react";
 
 const ActivityDetails = ({ title, dateTime, description, picsUrls, videoUrls }) => {
 
-console.log("videoUrls",videoUrls)
-
     return (
         <div className="text-left grid gap-3 p-3 w-full">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>

@@ -8,7 +8,6 @@ import Loading from "./Loading";
 import Footer from "./components/Footer";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import NotFound from "./not-found";
-import Provider from "./providers";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -28,7 +27,7 @@ export default async function RootLayout({ children }) {
 
     <html lang="en">
       <body className={inter.className}>
-      <Provider>
+
         {
           settings &&
           <div className='flex flex-col min-h-lvh w-dvw'>
@@ -42,7 +41,7 @@ export default async function RootLayout({ children }) {
             
           </div>
         }
-           </Provider>
+
       </body>
     </html>
 
