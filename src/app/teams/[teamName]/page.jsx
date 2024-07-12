@@ -1,7 +1,5 @@
 'use client'
-import React, { useContext } from "react";
-import { usePathname } from 'next/navigation'
-import { useState, useEffect } from "react"
+import React, { useContext,useState, useEffect  } from "react";
 import { getActivities, getTeamByTeamId } from "@/app/api/useContentful";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { SearchResultContext } from "@/app/context/createContext";
@@ -33,10 +31,6 @@ const TeamPage = () => {
 
     }, [searchItem])
 
-
-
-    // const router = useRouter()
-    // const teamName = router.query.teamName
     return (
 
         team &&
