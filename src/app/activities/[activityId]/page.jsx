@@ -1,7 +1,7 @@
 'use client'
 import React,{useState, useEffect} from "react";
 import { usePathname } from "next/navigation";
-import { getActivitieById } from "@/app/api/getContentful";
+import { getActivityById } from "@/app/api/getContentful";
 import ActivityDetails from "@/app/components/ActivityDetails";
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
@@ -16,7 +16,7 @@ const Page = ()=> {
 
     useEffect(()=> {
 
-        activityId && getActivitieById(activityId).then(res=>{
+        activityId && getActivityById(activityId).then(res=>{
 
             const response = JSON.parse(res).data.fields
             setRichText(documentToReactComponents(response.description))
