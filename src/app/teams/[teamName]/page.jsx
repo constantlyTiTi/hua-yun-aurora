@@ -41,7 +41,7 @@ const TeamPage = () => {
 
         team &&
 
-                <Accordion id="teamDetailCollapse" selectionMode="multiple">
+                <Accordion id="teamDetailCollapse" selectionMode="multiple" defaultExpandedKeys={["1","4"]}>
                     <AccordionItem key="1" aria-label="Team Name" title="Team Name">
                         {team.teamNameFull}
                     </AccordionItem>
