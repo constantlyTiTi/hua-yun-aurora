@@ -75,8 +75,9 @@ const getNews = ()=>{
 
     return client.getEntries({
         content_type:"news",
-        select:"fields"
-    }).then(res => ({data:res})).catch(err =>  ({error:err}))
+        select:"fields",
+        order:"-fields.dateTime"
+    }).then(res => JSON.stringify({data:res})).catch(err =>  JSON.stringify({error:err}))
 }
 
 export {getWebSetting,getIntroduction, getTeams, getTeamByTeamName, getActivities, getActivityById, getNews}
