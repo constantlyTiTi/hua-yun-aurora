@@ -36,10 +36,10 @@ const getTeams = () => {
         content_type:"teams",
         select:"fields",
         order:"fields.teamNameShort"
-    }).then(res => ({data:res})).catch(err =>  ({error:err}))
+    }).then(res => (JSON.stringify({data:res}))).catch(err =>  JSON.stringify({error:err}))
 }
 
-const getTeamByTeamName = (teamId) => {
+const getTeamByTeamId = (teamId) => {
     const client = useContentful()
 
     return client.getEntry(teamId).then(res => (JSON.stringify({data:res}))).catch(err => JSON.stringify({error:err}))
@@ -48,24 +48,22 @@ const getTeamByTeamName = (teamId) => {
 const getActivities = (teamNameShort) => {
     const client = useContentful()
 
-    console.log("abcded")
+    console.log("teamNameShort")
 
     return client.getEntries({
         content_type:"activities",
         select:"fields",
         order:"fields.dateTime",
-        "fields.teamNameShort[match]":teamNameShort
-    }).then(res => ({data:console.log("res",res)})).catch(err =>  ({error:JSON.stringify(err)}))
+        "fields.teamNamesShort[match]":teamNameShort
+    }).then(res => JSON.stringify({data:res})).catch(err =>  JSON.stringify({error:err}))
 }
 
-const getActivitiesByName = (activityName) => {
+const getActivityById = (activityId) => {
     const client = useContentful()
 
-    return client.getEntries({
-        content_type:"activities",
-        select:"fields",
-        "fields.name[match]":activityName
-    }).then(res => ({data:res})).catch(err =>  ({error:err}))
+    console.log(activityId)
+
+    return client.getEntry(activityId).then(res => JSON.stringify({data:res})).catch(err => JSON.stringify({error:err}))
 }
 
 const getNews = ()=>{
@@ -77,4 +75,4 @@ const getNews = ()=>{
     }).then(res => ({data:res})).catch(err =>  ({error:err}))
 }
 
-export {getWebSetting,getIntroduction, getTeams, getTeamByTeamName, getActivities, getActivitiesByName, getNews}
+export {getWebSetting,getIntroduction, getTeams, getTeamByTeamId, getActivities, getActivityById as getActivitiesById, getNews}

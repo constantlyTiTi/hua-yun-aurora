@@ -8,6 +8,7 @@ import Loading from "./Loading";
 import Footer from "./components/Footer";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import NotFound from "./not-found";
+import Provider from "./providers";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -27,18 +28,25 @@ export default async function RootLayout({ children }) {
 
     <html lang="en">
       <body className={inter.className}>
+      <Provider>
         {
           settings &&
-          <div className='h-dvh flex flex-col'>
+          <div className='flex flex-col min-h-lvh w-dvw'>
             <Header header={settings.header} iconHeaderImageUrl={settings.iconHeaderImageUrl} />
-            <div className='w-dvw flex h-full'>
+            <div className='w-dvw flex h-full mb-auto '>
+            {/* <div class="w-full">
+            <div class="border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700"> */}
               <Suspense fallback={<Loading />}>
                 <ErrorBoundary fallback={<NotFound />}>{children}</ErrorBoundary>
               </Suspense>
+              {/* </div>
+              </div> */}
             </div>
             <Footer />
+            
           </div>
         }
+           </Provider>
       </body>
     </html>
 
