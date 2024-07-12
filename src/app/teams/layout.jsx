@@ -1,6 +1,6 @@
 import Sidebar from "@/app/components/Sidebar"
 import React from "react"
-import {getTeams} from '@/app/api/useContentful'
+import {getTeams} from '@/app/api/getContentful'
 
 export default async function TeamsLayout({
     children, // will be a page or nested layout

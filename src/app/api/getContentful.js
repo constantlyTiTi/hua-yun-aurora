@@ -39,7 +39,7 @@ const getTeams = () => {
     }).then(res => (JSON.stringify({data:res}))).catch(err =>  JSON.stringify({error:err}))
 }
 
-const getTeamByTeamId = (teamNameShort) => {
+const getTeamByTeamName = (teamNameShort) => {
     const client = useContentful()
 
     return client.getEntries({
@@ -79,4 +79,4 @@ const getNews = ()=>{
     }).then(res => ({data:res})).catch(err =>  ({error:err}))
 }
 
-export {getWebSetting,getIntroduction, getTeams, getTeamByTeamId, getActivities, getActivityById as getActivitiesById, getNews}
+export {getWebSetting,getIntroduction, getTeams, getTeamByTeamName, getActivities, getActivityById, getNews}

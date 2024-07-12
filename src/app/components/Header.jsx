@@ -1,9 +1,8 @@
 'use client'
-import React,{useState,useEffect,useContext, useRef} from "react";
-import { getTeams } from "../api/useContentful";
+import React,{useState,useEffect, useRef} from "react";
+import { getTeams } from "../api/getContentful";
 import SidebarItem from "./SidebarItem";
 import { useRouter } from 'next/navigation'
-import { SearchResultContext } from "../context/createContext";
 
 const Header = ({ header, iconHeaderImageUrl }) => {
 
@@ -15,7 +14,6 @@ const Header = ({ header, iconHeaderImageUrl }) => {
 
     const dropDownRef = useRef()
 
-    const {setSearchItem} = useContext(SearchResultContext)
 
     useEffect(()=>{
         getTeams().then(res=> setHeaderItems(JSON.parse(res).data.items)).catch(err=>console.log(err))

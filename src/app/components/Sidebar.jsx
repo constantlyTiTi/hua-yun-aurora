@@ -1,7 +1,6 @@
 'use client'
-import React, { useContext } from "react";
+import React from "react";
 import SidebarItem from "@/app/components/SidebarItem";
-import { SearchResultContext } from "@/app/context/createContext";
 import { useRouter } from 'next/navigation'
 
 
@@ -10,10 +9,10 @@ const Sidebar = ({ teams }) => {
     const router = useRouter()
 
     const sidebarItemClick = (teamName) => {
-        router.push({
-            pathname: `/teams/[teamName]`,
-            query: { team_name:teamName },
-          })
+        console.log(router)
+        router.push(`/teams/${teamName}`)
+
+          console.log(teamName)
     }
 
     return (

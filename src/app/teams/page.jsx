@@ -1,5 +1,5 @@
 import React from "react";
-import { getIntroduction } from "../api/useContentful";
+import { getIntroduction } from "../api/getContentful";
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 const Page = async ({team}) =>{

@@ -1,7 +1,7 @@
 
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { getWebSetting } from "./api/useContentful";
+import { getWebSetting } from "./api/getContentful";
 import Header from "./components/Header";
 import { Suspense } from "react";
 import Loading from "./Loading";

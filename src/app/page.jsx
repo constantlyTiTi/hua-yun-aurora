@@ -1,6 +1,6 @@
 
 import Introduction from "./components/Introduction";
-import { getIntroduction } from "./api/useContentful";
+import { getIntroduction } from "./api/getContentful";
 
 export default async function Home() {
 

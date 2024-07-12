@@ -1,10 +1,8 @@
 'use client'
-import React, { useContext,useState, useEffect  } from "react";
-import { getActivities, getTeamByTeamId as getTeamByTeamName } from "@/app/api/useContentful";
+import React, { useState, useEffect  } from "react";
+import { getActivities, getTeamByTeamName} from "@/app/api/getContentful";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
-import { SearchResultContext } from "@/app/context/createContext";
 import ActivityCard from "@/app/components/ActivityCard";
-import { useSearchParams } from 'next/navigation'
 
 const TeamPage = ({params}) => {
 
