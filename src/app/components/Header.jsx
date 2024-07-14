@@ -15,6 +15,10 @@ const Header = ({ header, iconHeaderImageUrl }) => {
 
     const dropDownRef = useRef()
 
+    const iconRef = useRef()
+
+    console.log(isDisplayDropDown)
+
 
     useEffect(()=>{
         getTeams().then(res=> setHeaderItems(JSON.parse(res).data.items)).catch(err=>console.log(err))
@@ -25,10 +29,16 @@ const Header = ({ header, iconHeaderImageUrl }) => {
         setIsDisplayDropDown(false)
     }
 
+    const iconOnClick = ()=> {
+        console.log("state",isDisplayDropDown)
+        setIsDisplayDropDown(!isDisplayDropDown)
+    }
+
     useEffect(() => {
 
         function handleClickOutside(event) {
-          if (dropDownRef.current && !dropDownRef.current.contains(event.target)) {
+          if (dropDownRef.current && !dropDownRef.current.contains(event.target) && iconRef.current && !iconRef.current.contains(event.target) ) {
+            console.log("iconRef",isDisplayDropDown)
             setIsDisplayDropDown(false)
           }
         }
@@ -44,7 +54,7 @@ const Header = ({ header, iconHeaderImageUrl }) => {
             <header className='sticky flex-none top-0 z-40 bg-white relative w-dvw max-h-dvh'>
                 <nav className="mx-auto  h-25 flex justify-initial items-center justify-between py-6 lg:px-8" aria-label="Global">
 
-                <div className = "flex-none px-6" onClick = {()=>setIsDisplayDropDown(!isDisplayDropDown)}>
+                <div className = "flex-none px-6" onClick = {()=>iconOnClick()} ref={iconRef}>
                         <img className="h-8 w-auto" src={iconHeaderImageUrl} alt="website icon"  />
                         </div>
 
@@ -57,14 +67,14 @@ const Header = ({ header, iconHeaderImageUrl }) => {
                 </nav>
                 <div ref={dropDownRef} className={`absolute top-25 ml-0 h-auto sm:h-auto sm:ml-6  w-full sm:w-auto overflow-y-auto z-50 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 ${isDisplayDropDown ? "block" : "hidden"}`}>
                     <div className=" block sm:hidden flex justify-end p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg onClick = {()=>setIsDisplayDropDown(!isDisplayDropDown)} class="h-8 w-8 text-red-500"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
+                    <svg onClick = {()=>setIsDisplayDropDown(!isDisplayDropDown)} className="h-8 w-8 text-red-500"  width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
                     </div>
                     <Link href="/" key='header-home'  onClick = {()=>setIsDisplayDropDown(!isDisplayDropDown)}  className="block items-center ms-3" >
                     <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"> Home</div></Link>
                        
-                    <Link href="/teams"  onClick = {()=>setIsDisplayDropDown(!isDisplayDropDown)} key='header-home' className="block items-center ms-3" >
+                    <Link href="/teams"  onClick = {()=>setIsDisplayDropDown(!isDisplayDropDown)} key='header-teamNews' className="block items-center ms-3" >
                     <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"> Teams News</div></Link>
-                    {headerItems?.map(t => <SidebarItem onclick={sidebarItemClick} key={`headerMenu-${t.sys.id}`} teamNameShort={t.fields.teamNameShort} teamNameFull={t.fields.teamNameFull}/>)}
+                    {headerItems?.map(t => <SidebarItem onclick={sidebarItemClick} key={`sidebarItem-${t.sys.id}`} sysId={t.sys.id} teamNameShort={t.fields.teamNameShort} teamNameFull={t.fields.teamNameFull}/>)}
 
                 </div>
             </header>
