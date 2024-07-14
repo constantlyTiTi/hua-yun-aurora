@@ -7,7 +7,7 @@ const Introduction = ({ introduction }) => {
     const richText = documentToReactComponents(introduction.groupDescription)
 
     return (
-        <div className="grid md:grid-cols-2 w-dvw gap-4">
+        <div className="grid md:grid-cols-2 w-dvw gap-4 content-start">
             <div className="lg:w-dv-60 md:w-dv-50">
                 {
                     introduction?.introductionImageUrl && <img className="h-auto max-w-full rounded-lg" src={introduction.introductionImageUrl} alt="group desciption picture" />

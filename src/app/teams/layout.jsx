@@ -11,11 +11,11 @@ export default async function TeamsLayout({
     return (
 
       // <section className="flex w-dvw h-full flex-row">
-        <section className="w-dvw relative">
+        <section className="w-dvw relative top-0 flex flex-row h-full">
         {/* Include shared UI here e.g. a header or sidebar */}
         {sidebarItems?.data && <Sidebar teams={sidebarItems.data.items}/>}
 
-        <div className="sm:ml-64 p-4">
+        <div className="sm:ml-64 p-4 flex-1">
         <div className="border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
         {children}
         </div>

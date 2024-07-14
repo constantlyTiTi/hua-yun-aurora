@@ -30,14 +30,25 @@ export default async function RootLayout({ children }) {
 
         {
           settings &&
-          <div className='flex flex-col min-h-lvh w-dvw'>
-            <Header header={settings.header} iconHeaderImageUrl={settings.iconHeaderImageUrl} />
-            <div className='w-dvw flex h-full mb-auto '>
+          <div className='relative h-screen flex flex-col w-dvw'>
+            
+            {/* <div className='absolute relative top-0 w-dvw flex h-dvh'> */}
               <Suspense fallback={<Loading />}>
-                <ErrorBoundary fallback={<NotFound />}>{children}</ErrorBoundary>
+              <Header header={settings.header} iconHeaderImageUrl={settings.iconHeaderImageUrl} />
+                <ErrorBoundary  fallback={<NotFound />}>
+                <div className="flex-1 flex">
+                {children}
+                </div>
+                </ErrorBoundary>
               </Suspense>
-            </div>
-            <Footer />
+
+              <Footer />
+              
+            {/* </div> */}
+            
+            
+            
+            
             
           </div>
         }

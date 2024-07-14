@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
 
     return (
-        <footer className=" bottom-0 h-auto z-50 w-full bg-white rounded-lg shadow mx-auto dark:bg-gray-800">
+        <footer className="flex-none bottom-0 w-full bg-white rounded-lg shadow mx-auto dark:bg-gray-800">
             <div className="w-dvw p-4 md:flex md:items-center md:justify-between">
                 <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://huayunaurora.ca/" className="hover:underline">HUA-YUN-AURORA</a>. All Rights Reserved.
                 </span>
