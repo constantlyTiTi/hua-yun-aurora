@@ -11,7 +11,7 @@ export default async function TeamsLayout({
     return (
 
       // <section className="flex w-dvw h-full flex-row">
-        <section className="w-dvw">
+        <section className="w-dvw relative">
         {/* Include shared UI here e.g. a header or sidebar */}
         {sidebarItems?.data && <Sidebar teams={sidebarItems.data.items}/>}
 
