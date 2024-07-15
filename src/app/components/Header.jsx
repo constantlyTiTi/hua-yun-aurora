@@ -5,7 +5,9 @@ import SidebarItem from "./SidebarItem";
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
-const Header = ({ header, iconHeaderImageUrl }) => {
+const Header = ({ settings }) => {
+
+    const {header,iconHeaderImageUrl,backgroundImageUrl, headerTextColor,headerBackgroundColorLightMode, headerBackgroundColorDarkMode} = settings
 
     const [headerItems, setHeaderItems] = useState()
 

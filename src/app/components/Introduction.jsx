@@ -8,12 +8,12 @@ const Introduction = ({ introduction }) => {
 
     return (
         <div className="grid md:grid-cols-2 w-dvw gap-4 content-start">
-            <div className="lg:w-dv-60 md:w-dv-50">
+            <div className="lg:w-dv-60 md:w-dv-50 px-2">
                 {
                     introduction?.introductionImageUrl && <img className="h-auto max-w-full rounded-lg" src={introduction.introductionImageUrl} alt="group desciption picture" />
                 }
             </div>
-            <div className="lg:w-dv-40 md:w-dv-50 text-center my-auto">
+            <div className="lg:w-dv-40 md:w-dv-50 text-center my-auto px-5">
                 {richText}
                 <Link type="button"
                 href='/teams'

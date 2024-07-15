@@ -32,9 +32,8 @@ export default async function RootLayout({ children }) {
           settings &&
           <div className='relative h-screen flex flex-col w-dvw'>
             
-            {/* <div className='absolute relative top-0 w-dvw flex h-dvh'> */}
               <Suspense fallback={<Loading />}>
-              <Header header={settings.header} iconHeaderImageUrl={settings.iconHeaderImageUrl} />
+              <Header settings = {settings} />
                 <ErrorBoundary  fallback={<NotFound />}>
                 <div className="flex-1 flex">
                 {children}
@@ -43,13 +42,7 @@ export default async function RootLayout({ children }) {
               </Suspense>
 
               <Footer />
-              
-            {/* </div> */}
-            
-            
-            
-            
-            
+
           </div>
         }
 

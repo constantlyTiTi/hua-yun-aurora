@@ -6,10 +6,10 @@ export default async function Home() {
 
   const intro = await getIntroduction()
 
-  const settings = intro?.data?.items[0]?.fields
+  const introduction = intro?.data?.items[0]?.fields
 
   return (
-    settings &&
-    <Introduction introduction={settings}/>
+    introduction &&
+    <Introduction introduction={introduction}/>
   );
 }
