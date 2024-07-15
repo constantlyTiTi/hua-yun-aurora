@@ -17,8 +17,6 @@ const Header = ({ header, iconHeaderImageUrl }) => {
 
     const iconRef = useRef()
 
-    console.log(isDisplayDropDown)
-
 
     useEffect(()=>{
         getTeams().then(res=> setHeaderItems(JSON.parse(res).data.items)).catch(err=>console.log(err))
@@ -30,7 +28,6 @@ const Header = ({ header, iconHeaderImageUrl }) => {
     }
 
     const iconOnClick = ()=> {
-        console.log("state",isDisplayDropDown)
         setIsDisplayDropDown(!isDisplayDropDown)
     }
 
@@ -38,7 +35,6 @@ const Header = ({ header, iconHeaderImageUrl }) => {
 
         function handleClickOutside(event) {
           if (dropDownRef.current && !dropDownRef.current.contains(event.target) && iconRef.current && !iconRef.current.contains(event.target) ) {
-            console.log("iconRef",isDisplayDropDown)
             setIsDisplayDropDown(false)
           }
         }

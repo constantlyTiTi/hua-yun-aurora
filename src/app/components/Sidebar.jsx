@@ -1,13 +1,23 @@
 'use client'
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SidebarItem from "@/app/components/SidebarItem";
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
+import {getTeams} from '@/app/api/getContentful'
 
 
-const Sidebar = ({ teams }) => {
+const Sidebar = () => {
 
     const router = useRouter()
+    const [teams, setTeams] = useState()
+
+    useEffect(()=>{
+        getTeams().then((res) => {
+            const sidebarItems = JSON.parse(res)
+            sidebarItems?.data?.items && setTeams(sidebarItems?.data?.items)
+        })
+
+    },[])
+
 
     const sidebarItemClick = (teamName) => {
         router.push(`/teams/${teamName}`)
