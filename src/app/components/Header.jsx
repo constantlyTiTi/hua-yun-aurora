@@ -4,12 +4,15 @@ import { getTeams } from "../api/getContentful";
 import SidebarItem from "./SidebarItem";
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { getTeamPageHeaders} from '@/app/api/getContentful'
 
 const Header = ({ settings }) => {
 
     const {header,iconHeaderImageUrl,backgroundImageUrl, headerTextColor,headerBackgroundColorLightMode, headerBackgroundColorDarkMode} = settings
 
     const [headerItems, setHeaderItems] = useState()
+
+    const [headerTitles, setHeaderTitles] = useState()
 
     const [isDisplayDropDown, setIsDisplayDropDown] = useState(false)
 
@@ -22,6 +25,13 @@ const Header = ({ settings }) => {
 
     useEffect(()=>{
         getTeams().then(res=> setHeaderItems(JSON.parse(res).data.items)).catch(err=>console.log(err))
+        getTeamPageHeaders().then(res => {
+
+            const jsonObj = JSON.parse(res)
+
+            jsonObj.data.items.length > 0 && setHeaderTitles(jsonObj.data.items[0].fields)
+
+        })
     },[])
 
     const sidebarItemClick = (teamName) => {
@@ -71,7 +81,11 @@ const Header = ({ settings }) => {
                     <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"> Home</div></Link>
                        
                     <Link href="/teams"  onClick = {()=>setIsDisplayDropDown(!isDisplayDropDown)} key='header-teamNews' className="block items-center ms-3" >
-                    <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"> Teams News</div></Link>
+                    {
+                        headerTitles && <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"> {headerTitles.teamNewsName}</div>
+                    }
+                    </Link>
+                    
                     {headerItems?.map(t => <SidebarItem onclick={sidebarItemClick} key={`sidebarItem-${t.sys.id}`} sysId={t.sys.id} teamNameShort={t.fields.teamNameShort} teamNameFull={t.fields.teamNameFull}/>)}
 
                 </div>
