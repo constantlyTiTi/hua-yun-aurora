@@ -47,7 +47,7 @@ const getTeams = () => {
     return client.getEntries({
         content_type:"teams",
         select:"fields",
-        order:"fields.teamNameShort"
+        order:"fields.order"
     }).then(res => (JSON.stringify({data:res}))).catch(err =>  JSON.stringify({error:err}))
 }
 
