@@ -63,7 +63,7 @@ const Header = ({ settings }) => {
                     </div>
 
                 </nav>
-                <div ref={dropDownRef} className={`absolute top-25 ml-0 h-auto sm:h-auto sm:ml-6  w-full sm:w-auto overflow-y-auto z-50 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 ${isDisplayDropDown ? "block" : "hidden"}`}>
+                <div ref={dropDownRef} className={`absolute top-25 ml-0 h-screen pr-5 sm:h-auto sm:ml-6  w-full sm:w-auto overflow-y-auto z-50 bg-white divide-y divide-gray-100 rounded-lg shadow-xl dark:bg-gray-700 ${isDisplayDropDown ? "block" : "hidden"}`}>
                     <div className=" block sm:hidden flex justify-end p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg onClick = {()=>setIsDisplayDropDown(!isDisplayDropDown)} className="h-8 w-8 text-red-500"  width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
                     </div>
