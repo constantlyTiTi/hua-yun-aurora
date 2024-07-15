@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { getNews } from "../api/getContentful";
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
+import {itemClasses} from '@/app/const/css'
 
 const Page = () => {
 
@@ -19,7 +20,7 @@ const Page = () => {
         news && <div className="lg:w-dv-40 md:w-dv-50 text-center my-auto">
 
 
-            <Accordion id="newsDetailCollapse" selectionMode="multiple" defaultExpandedKeys={["news-0"]}>
+            <Accordion id="newsDetailCollapse" variant="splitted" selectionMode="multiple" defaultExpandedKeys={["news-0"]} itemClasses={itemClasses}>
                 {
                     news?.map((f, index) => {
 
