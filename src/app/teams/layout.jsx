@@ -8,7 +8,7 @@ export default async function TeamsLayout({
     return (
 
       // <section className="flex w-dvw h-full flex-row">
-        <section className="w-dvw relative top-0 flex flex-row h-full">
+        <section className="w-svw relative top-0 flex flex-row h-full">
         {/* Include shared UI here e.g. a header or sidebar */}
         <Sidebar/>
 

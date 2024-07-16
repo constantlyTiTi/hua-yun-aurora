@@ -36,8 +36,6 @@ const TeamPage = ({ params }) => {
 
             const jsonObj = JSON.parse(res)
 
-            console.log(jsonObj.data.items[0].fields)
-
             jsonObj.data.items.length > 0 && setHeader(jsonObj.data.items[0].fields)
 
         })

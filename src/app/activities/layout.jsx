@@ -7,7 +7,7 @@ export default async function ActivityLayout({
 
     return (
 
-      <section className="w-dvw relative top-0 flex flex-row h-full">
+      <section className="w-svw relative top-0 flex flex-row h-full">
         {/* Include shared UI here e.g. a header or sidebar */}
         <Sidebar/>
    

@@ -30,7 +30,7 @@ export default async function RootLayout({ children }) {
 
         {
           settings &&
-          <div className='relative h-screen flex flex-col w-dvw'>
+          <div className='relative h-svh flex flex-col w-svw'>
             
               <Suspense fallback={<Loading />}>
               <Header settings = {settings} />

@@ -41,6 +41,16 @@ const getTeamPageHeaders = () => {
     }).then(res => (JSON.stringify({data:res}))).catch(err =>  JSON.stringify({error:err}))
 }
 
+const getActivityPageSetting = () => {
+    const client = connectContentful()
+
+    return client.getEntries({
+        content_type:"activitiesPageHeaderSetting",
+        select:"fields",
+        order:"-fields.version"
+    }).then(res => (JSON.stringify({data:res}))).catch(err =>  JSON.stringify({error:err}))
+}
+
 const getTeams = () => {
     const client = connectContentful()
 
@@ -89,4 +99,4 @@ const getNews = ()=>{
     }).then(res => JSON.stringify({data:res})).catch(err =>  JSON.stringify({error:err}))
 }
 
-export {getWebSetting,getIntroduction, getTeams, getTeamByTeamName, getActivities, getActivityById, getNews, getTeamPageHeaders}
+export {getWebSetting,getIntroduction, getTeams, getTeamByTeamName, getActivities, getActivityById, getNews, getTeamPageHeaders,getActivityPageSetting}

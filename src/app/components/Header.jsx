@@ -59,7 +59,7 @@ const Header = ({ settings }) => {
 
     return (headerItems && 
         <>
-            <header className='sticky flex flex-col flex-none top-0 z-40 bg-white relative w-dvw h-20 overflow-visible shadow-lg'>
+            <header className='sticky flex flex-col flex-none top-0 z-40 bg-white relative w-full h-20 overflow-visible shadow-lg'>
                 <nav className="h-25 flex justify-initial items-center justify-between py-6 lg:px-8" aria-label="Global">
 
                 <div className = "flex-none px-6" onClick = {()=>iconOnClick()} ref={iconRef}>
