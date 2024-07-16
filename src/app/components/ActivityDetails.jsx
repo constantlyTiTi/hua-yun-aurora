@@ -68,7 +68,7 @@ const ActivityDetails = ({ title, dateTime, description, picsUrls, videoUrls }) 
                             {
                                 videoUrls.map((url, index) =>
 
-                                    <video key={`video-${index}`} className="w-full h-full" controls>
+                                    <video key={`video-${index}`} autobuffer="true" className="w-full h-full" controls>
                                         <source key={`source-${index}`} src={url} type="video/mp4" />
                                         <img src={url} title="Your browser does not support the <video> tag" />
                                     </video>
