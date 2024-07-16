@@ -59,8 +59,8 @@ const Header = ({ settings }) => {
 
     return (headerItems && 
         <>
-            <header className='sticky flex-none top-0 z-40 bg-white relative w-dvw max-h-dvh'>
-                <nav className="mx-auto  h-25 flex justify-initial items-center justify-between py-6 lg:px-8" aria-label="Global">
+            <header className='sticky flex flex-col flex-none top-0 z-40 bg-white relative w-dvw h-20 overflow-visible'>
+                <nav className="h-25 flex justify-initial items-center justify-between py-6 lg:px-8" aria-label="Global">
 
                 <div className = "flex-none px-6" onClick = {()=>iconOnClick()} ref={iconRef}>
                         <img className="h-8 w-auto" src={iconHeaderImageUrl} alt="website icon"  />
@@ -73,7 +73,7 @@ const Header = ({ settings }) => {
                     </div>
 
                 </nav>
-                <div ref={dropDownRef} className={`absolute top-25 ml-0 h-screen pr-5 sm:h-auto sm:ml-6  w-full sm:w-auto overflow-y-auto z-50 bg-white divide-y divide-gray-100 rounded-lg shadow-xl dark:bg-gray-700 ${isDisplayDropDown ? "block" : "hidden"}`}>
+                <div ref={dropDownRef} className={`flex flex-col flex-none top-25 ml-0 h-screen md:h-auto pr-5 sm:ml-6  w-full sm:w-fit overflow-y-auto z-50 bg-white divide-y divide-gray-100 rounded-lg shadow-xl dark:bg-gray-700 ${isDisplayDropDown ? "block" : "hidden"}`}>
                     <div className=" block sm:hidden flex justify-end p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg onClick = {()=>setIsDisplayDropDown(!isDisplayDropDown)} className="h-8 w-8 text-red-500"  width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
                     </div>
