@@ -55,7 +55,7 @@ const ActivityDetails = ({ title, dateTime, description, picsUrls, videoUrls }) 
 
                 {
                     picsUrls?.length > 0 && <AccordionItem key="3" aria-label={setting.imageHeader} title={setting.imageHeader}>
-                        <div key="acc-3" className="grid w-full grid-cols-1 sm:grid-cols-3">
+                        <div key="acc-3" className="grid w-full grid-cols-1 sm:grid-cols-3 gap-3">
                             {picsUrls.map((url, index) => <div onClick={()=>imageOnClick(url)} key={`pic-${index}`}> <img className="h-auto max-w-full rounded-lg" key={`image-${index}`} src={url} alt="activity picture" /></div>)}
                         </div>
                     </AccordionItem>
@@ -64,7 +64,7 @@ const ActivityDetails = ({ title, dateTime, description, picsUrls, videoUrls }) 
 
                 {
                     videoUrls?.length > 0 && <AccordionItem key="4" aria-label={setting.videoHeader} title={setting.videoHeader}>
-                        <div key="acc-4" className="grid w-auto grid-cols-1 sm:grid-cols-3">
+                        <div key="acc-4" className="grid w-auto grid-cols-1 sm:grid-cols-3 gap-3">
                             {
                                 videoUrls.map((url, index) =>
 
