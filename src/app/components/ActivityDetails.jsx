@@ -63,13 +63,14 @@ const ActivityDetails = ({ title, dateTime, description, picsUrls, videoUrls }) 
                 }
 
                 {
-                    videoUrls?.length > 0 && <AccordionItem key="4" aria-label={setting.imageHeader} title={setting.imageHeader}>
+                    videoUrls?.length > 0 && <AccordionItem key="4" aria-label={setting.videoHeader} title={setting.videoHeader}>
                         <div key="acc-4" className="grid w-auto grid-cols-1 sm:grid-cols-3">
                             {
                                 videoUrls.map((url, index) =>
 
                                     <video key={`video-${index}`} className="w-full h-full" controls>
                                         <source key={`source-${index}`} src={url} type="video/mp4" />
+                                        <img src={url} title="Your browser does not support the <video> tag" />
                                     </video>
                                 )
                             }
