@@ -33,7 +33,7 @@ const ActivityDetails = ({ title, dateTime, description, picsUrls, videoUrls }) 
     }
 
     return (
-        setting && <div className="text-left grid gap-3 p-3">
+        setting && <div className="text-left grid gap-3 p-3 w-full">
             <div className={`bg-black flex flex-col w-full h-svh overflow-auto z-50 top-0 left-0 fixed  ${isScaleOpen ? "block" : "hidden"}`}>
                 <div className="flex justify-end p-2 group">
                     <svg onClick={closeScaleImage} className="rounded-lg h-8 w-8 text-red-500 hover:bg-gray-100 dark:hover:bg-gray-700" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
