@@ -1,12 +1,18 @@
 import React from "react";
 import Link from 'next/link'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { getIntroduction } from "@/app/api/getContentful";
 
-const Introduction = ({ introduction }) => {
+const Introduction = async () => {
+
+    const intro = await getIntroduction()
+
+    const introduction = intro?.data?.items[0]?.fields
 
     const richText = documentToReactComponents(introduction.groupDescription)
 
     return (
+        introduction &&
         <div className="grid md:grid-cols-2 w-full gap-4 content-start">
             <div className="lg:w-dv-60 md:w-dv-50 px-2">
                 {
