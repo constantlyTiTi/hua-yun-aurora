@@ -1,4 +1,3 @@
-
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { getWebSetting } from "./api/getContentful";
@@ -9,7 +8,6 @@ import Footer from "./components/Footer";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import NotFound from "./not-found";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -18,36 +16,26 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
+  const webSettings = await getWebSetting();
 
-  const webSettings = await getWebSetting()
-
-  const settings = webSettings?.data?.items[0]?.fields
+  const settings = webSettings?.data?.items[0]?.fields;
 
   return (
-
     <html lang="en">
       <body className={inter.className}>
+        {settings && (
+          <div className="relative h-svh flex flex-col w-svw">
+            <Suspense fallback={<Loading />}>
+              <Header settings={settings} />
+              <ErrorBoundary fallback={<NotFound />}>
+                <div className="flex-1 flex">{children}</div>
+              </ErrorBoundary>
+            </Suspense>
 
-        {
-          settings &&
-          <div className='relative h-svh flex flex-col w-svw'>
-            
-              <Suspense fallback={<Loading />}>
-              <Header settings = {settings} />
-                <ErrorBoundary  fallback={<NotFound />}>
-                <div className="flex-1 flex">
-                {children}
-                </div>
-                </ErrorBoundary>
-              </Suspense>
-
-              <Footer />
-
+            <Footer />
           </div>
-        }
-
+        )}
       </body>
     </html>
-
   );
 }

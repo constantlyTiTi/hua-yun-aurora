@@ -1,4 +1,4 @@
-'use client'
-import { createContext} from 'react'
+"use client";
+import { createContext } from "react";
 
-export const SearchResultContext = createContext({})
+export const SearchResultContext = createContext({});

@@ -1,12 +1,8 @@
-
 import Introduction from "./components/Introduction";
-import { revalidatePath } from 'next/cache'
+import { revalidatePath } from "next/cache";
 
 export default function Home() {
+  revalidatePath("/");
 
-  revalidatePath('/')
-
-  return (
-    <Introduction/>
-  );
+  return <Introduction />;
 }

@@ -1,6 +1,6 @@
-import React from "react"
-import LoadingCircle from "./components/LoadingCricle"
+import React from "react";
+import LoadingCircle from "./components/LoadingCricle";
 
 export default function Loading() {
-    return <LoadingCircle/>
+  return <LoadingCircle />;
 }
