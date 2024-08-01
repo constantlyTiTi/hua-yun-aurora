@@ -64,11 +64,11 @@ const Header = ({ settings }) => {
       <>
         <header className="relative sticky top-0 z-40 flex h-20 w-full flex-none flex-col overflow-visible bg-white shadow-lg">
           <nav
-            className="h-25 justify-initial flex items-center justify-between py-6 lg:px-8"
+            className="h-25 flex items-center py-6 lg:px-8"
             aria-label="Global"
           >
             <div
-              className="flex-none px-6"
+              className="w-auto flex-none px-6"
               onClick={() => iconOnClick()}
               ref={iconRef}
             >
@@ -79,12 +79,17 @@ const Header = ({ settings }) => {
               />
             </div>
 
-            <div className="w-70 flex-1 justify-center">
+            <div className="w-64 flex-1 justify-center">
               <div className="justify-none relative">
                 <h5 className="text-lg font-semibold leading-6 text-gray-900">
                   {header}
                 </h5>
               </div>
+            </div>
+
+            <div className="w-auto  flex-none grid grid-cols-2 gap-4 justify-right">
+            <Link  href="/signup">Sign up</Link>
+            <Link href="/login">Login</Link>
             </div>
           </nav>
           <div
