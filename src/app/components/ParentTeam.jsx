@@ -45,7 +45,7 @@ const ParentTeam = ({ team, header }) => {
           >
             <div
               key="acc-2"
-              className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 "
+              className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
             >
               {team.teamLeaders.map((name) => (
                 <div key={`leader-${name}`}>{name}</div>
@@ -56,18 +56,18 @@ const ParentTeam = ({ team, header }) => {
       </Accordion>
       <div
         key="acc-2"
-        className="grid w-full grid-cols-1 sm:grid-cols-3 my-5 h-full"
+        className="my-5 grid h-full w-full grid-cols-1 sm:grid-cols-3"
       >
         {subTeams?.map((st) => (
           <div
             key={`sub-div-${st.fields.teamNameShort}`}
-            className="text-center mt-5"
+            className="mt-5 text-center"
             onClick={() => clickImage(st.fields.teamNameShort)}
           >
             <img
               key={`sub-img-${st.fields.teamNameShort}`}
               src={st.fields.teamThumbnailImageUrl}
-              class=" h-64 w-64 mx-auto rounded-full shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30"
+              class="mx-auto h-64 w-64 rounded-full shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30"
               alt={`${st.fields.teamNameFull} thumbnail image`}
             />
             <h3

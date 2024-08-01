@@ -1,5 +1,5 @@
 {
-  "extends": ["eslint:recommended","next","plugin:@next/next/recommended","plugin:prettier/recommended"],
+  "extends": ["eslint:recommended","next","plugin:@next/next/recommended","plugin:prettier/recommended","prettier"],
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": ["error"]

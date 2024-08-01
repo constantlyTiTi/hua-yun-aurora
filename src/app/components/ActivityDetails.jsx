@@ -37,14 +37,14 @@ const ActivityDetails = ({
 
   return (
     setting && (
-      <div className="text-left grid gap-3 p-3 w-full">
+      <div className="grid w-full gap-3 p-3 text-left">
         <div
-          className={`bg-black flex flex-col w-full h-svh overflow-auto z-50 top-0 left-0 fixed  ${isScaleOpen ? "block" : "hidden"}`}
+          className={`fixed left-0 top-0 z-50 flex h-svh w-full flex-col overflow-auto bg-black ${isScaleOpen ? "block" : "hidden"}`}
         >
-          <div className="flex justify-end p-2 group">
+          <div className="group flex justify-end p-2">
             <svg
               onClick={closeScaleImage}
-              className="rounded-lg h-8 w-8 text-red-500 hover:bg-gray-100 dark:hover:bg-gray-700"
+              className="h-8 w-8 rounded-lg text-red-500 hover:bg-gray-100 dark:hover:bg-gray-700"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -63,7 +63,7 @@ const ActivityDetails = ({
           {/* <div className="h-5/6 bg-white w-5/6 m-auto"> */}
           {scaleImageUrl && (
             <img
-              className="h-auto w-auto p-3 rounded-lg m-auto"
+              className="m-auto h-auto w-auto rounded-lg p-3"
               src={scaleImageUrl}
               alt="activity picture"
             />
@@ -103,7 +103,7 @@ const ActivityDetails = ({
             >
               <div
                 key="acc-3"
-                className="grid w-full grid-cols-1 sm:grid-cols-3 gap-3"
+                className="grid w-full grid-cols-1 gap-3 sm:grid-cols-3"
               >
                 {picsUrls.map((url, index) => (
                   <div onClick={() => imageOnClick(url)} key={`pic-${index}`}>
@@ -128,13 +128,13 @@ const ActivityDetails = ({
             >
               <div
                 key="acc-4"
-                className="grid w-auto grid-cols-1 sm:grid-cols-3 gap-3"
+                className="grid w-auto grid-cols-1 gap-3 sm:grid-cols-3"
               >
                 {videoUrls.map((url, index) => (
                   <video
                     key={`video-${index}`}
                     preload="metadata"
-                    className="w-full h-full"
+                    className="h-full w-full"
                     controls
                   >
                     <source

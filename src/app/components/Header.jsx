@@ -62,9 +62,9 @@ const Header = ({ settings }) => {
   return (
     headerItems && (
       <>
-        <header className="sticky flex flex-col flex-none top-0 z-40 bg-white relative w-full h-20 overflow-visible shadow-lg">
+        <header className="relative sticky top-0 z-40 flex h-20 w-full flex-none flex-col overflow-visible bg-white shadow-lg">
           <nav
-            className="h-25 flex justify-initial items-center justify-between py-6 lg:px-8"
+            className="h-25 justify-initial flex items-center justify-between py-6 lg:px-8"
             aria-label="Global"
           >
             <div
@@ -79,8 +79,8 @@ const Header = ({ settings }) => {
               />
             </div>
 
-            <div className="flex-1 justify-center w-70">
-              <div className="relative justify-none">
+            <div className="w-70 flex-1 justify-center">
+              <div className="justify-none relative">
                 <h5 className="text-lg font-semibold leading-6 text-gray-900">
                   {header}
                 </h5>
@@ -89,9 +89,9 @@ const Header = ({ settings }) => {
           </nav>
           <div
             ref={dropDownRef}
-            className={`flex flex-col flex-none top-25 ml-0 h-svh max-h-svh md:h-auto pr-5 sm:ml-6 sm:mb-2 w-full sm:w-fit overflow-y-auto z-50 bg-white divide-y divide-gray-100 rounded-lg shadow-xl dark:bg-gray-700 ${isDisplayDropDown ? "block" : "hidden"}`}
+            className={`top-25 z-50 ml-0 flex h-svh max-h-svh w-full flex-none flex-col divide-y divide-gray-100 overflow-y-auto rounded-lg bg-white pr-5 shadow-xl sm:mb-2 sm:ml-6 sm:w-fit md:h-auto dark:bg-gray-700 ${isDisplayDropDown ? "block" : "hidden"}`}
           >
-            <div className=" block sm:hidden flex justify-end p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <div className="group block flex justify-end rounded-lg p-2 text-gray-900 hover:bg-gray-100 sm:hidden dark:text-white dark:hover:bg-gray-700">
               <svg
                 onClick={() => setIsDisplayDropDown(!isDisplayDropDown)}
                 className="h-8 w-8 text-red-500"
@@ -114,9 +114,9 @@ const Header = ({ settings }) => {
               href="/"
               key="header-home"
               onClick={() => setIsDisplayDropDown(!isDisplayDropDown)}
-              className="block items-center ms-3"
+              className="ms-3 block items-center"
             >
-              <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+              <div className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                 {" "}
                 Home
               </div>
@@ -126,10 +126,10 @@ const Header = ({ settings }) => {
               href="/teams"
               onClick={() => setIsDisplayDropDown(!isDisplayDropDown)}
               key="header-teamNews"
-              className="block items-center ms-3"
+              className="ms-3 block items-center"
             >
               {headerTitles && (
-                <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <div className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                   {" "}
                   {headerTitles.teamNewsName}
                 </div>
