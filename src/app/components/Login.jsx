@@ -1,16 +1,26 @@
 import Link from "next/link";
 import React from "react";
 
-const Login = () => {
+const Login = ({ setting }) => {
+  const signupTitle = setting.signupTitle;
+  const loginTitle = setting.loginTitle;
+  const emailTitle = setting.emailTitle;
+  const passwordTitle = setting.passwordTitle;
+  const googleLoginTitle = setting.googleLoginTitle;
+  const loginWithEmail = setting.loginWithEmail;
+  const loginImageUrl = setting.loginImageUrl;
+
   return (
     <div className="mx-auto mt-10 flex h-auto justify-center bg-gray-100 text-gray-900">
       <div className="m-0 flex max-w-screen-xl flex-1 justify-center bg-white shadow sm:m-10 sm:rounded-lg">
         <div className="p-6 sm:p-12 lg:w-1/2 xl:w-5/12">
           <div className="mt-12 flex flex-col items-center">
-            <h1 className="text-2xl font-extrabold xl:text-3xl">Login</h1>
+            <h1 className="text-2xl font-extrabold xl:text-3xl">
+              {loginTitle}
+            </h1>
             <div className="mt-8 w-full flex-1">
               <div className="flex flex-col items-center">
-                <button className="focus:shadow-outline flex w-full max-w-xs items-center justify-center rounded-lg bg-indigo-100 py-3 font-bold text-gray-800 shadow-sm transition-all duration-300 ease-in-out hover:shadow focus:shadow-sm focus:outline-none">
+                <button className="focus:shadow-outline flex w-full max-w-xs items-center justify-center rounded-lg bg-indigo-100 px-3 py-3 font-bold text-gray-800 shadow-sm transition-all duration-300 ease-in-out hover:shadow focus:shadow-sm focus:outline-none">
                   <div className="rounded-full bg-white p-2">
                     <svg className="w-4" viewBox="0 0 533.5 544.3">
                       <path
@@ -31,7 +41,7 @@ const Login = () => {
                       />
                     </svg>
                   </div>
-                  <span className="ml-4">Login with Google</span>
+                  <span className="ml-4">{googleLoginTitle}</span>
                 </button>
 
                 {/* <button
@@ -50,7 +60,7 @@ const Login = () => {
 
               <div className="my-12 border-b text-center">
                 <div className="inline-block translate-y-1/2 transform bg-white px-2 text-sm font-medium leading-none tracking-wide text-gray-600">
-                  Or Login with e-mail
+                  {loginWithEmail}
                 </div>
               </div>
 
@@ -58,12 +68,12 @@ const Login = () => {
                 <input
                   className="w-full rounded-lg border border-gray-200 bg-gray-100 px-8 py-4 text-sm font-medium placeholder-gray-500 focus:border-gray-400 focus:bg-white focus:outline-none"
                   type="email"
-                  placeholder="Email"
+                  placeholder={emailTitle}
                 />
                 <input
                   className="mt-5 w-full rounded-lg border border-gray-200 bg-gray-100 px-8 py-4 text-sm font-medium placeholder-gray-500 focus:border-gray-400 focus:bg-white focus:outline-none"
                   type="password"
-                  placeholder="Password"
+                  placeholder={passwordTitle}
                 />
                 <button className="focus:shadow-outline mt-5 flex w-full items-center justify-center rounded-lg bg-indigo-500 py-4 font-semibold tracking-wide text-gray-100 transition-all duration-300 ease-in-out hover:bg-indigo-700 focus:outline-none">
                   <svg
@@ -78,11 +88,11 @@ const Login = () => {
                     <circle cx="8.5" cy="7" r="4" />
                     <path d="M20 8v6M23 11h-6" />
                   </svg>
-                  <span className="ml-3">Login</span>
+                  <span className="ml-3">{loginTitle}</span>
                 </button>
                 <div className="my-12 border-b text-center">
                   <div className="inline-block translate-y-1/2 transform bg-white px-2 text-sm font-medium leading-none tracking-wide text-gray-600">
-                    <Link href="/signup">Or Signup</Link>
+                    <Link href="/signup">{signupTitle}</Link>
                   </div>
                 </div>
               </div>
@@ -91,7 +101,7 @@ const Login = () => {
         </div>
         <div className="hidden flex-1 bg-indigo-100 text-center lg:flex">
           <div className="m-12 w-full xl:m-16">
-            <img src="https://storage.googleapis.com/devitary-image-host.appspot.com/15848031292911696601-undraw_designer_life_w96d.svg" />
+            <img src={loginImageUrl} />
           </div>
         </div>
       </div>

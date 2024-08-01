@@ -22,6 +22,19 @@ const getWebSetting = () => {
     .catch((err) => ({ error: err }));
 };
 
+const getAuthSetting = () => {
+  const client = connectContentful();
+
+  return client
+    .getEntries({
+      content_type: "authenticationPageSetUp",
+      select: "fields",
+      order: "-fields.version",
+    })
+    .then((res) => ({ data: res }))
+    .catch((err) => ({ error: err }));
+};
+
 const getIntroduction = () => {
   const client = connectContentful();
 
@@ -165,4 +178,5 @@ export {
   getActivityPageSetting,
   getLevel2Teams,
   getLevel2TeamByTeamName,
+  getAuthSetting,
 };
