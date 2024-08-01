@@ -51,7 +51,7 @@ const getActivityPageSetting = () => {
     }).then(res => (JSON.stringify({data:res}))).catch(err =>  JSON.stringify({error:err}))
 }
 
-const getTeams = () => {
+const getParentTeams = () => {
     const client = connectContentful()
 
     return client.getEntries({
@@ -61,11 +61,34 @@ const getTeams = () => {
     }).then(res => (JSON.stringify({data:res}))).catch(err =>  JSON.stringify({error:err}))
 }
 
+const getLevel2Teams = (parentTeamName) => {
+    console.log("parentTeamName",parentTeamName)
+    const client = connectContentful()
+
+    return client.getEntries({
+        content_type:"teamsLevel2",
+        select:"fields",
+        order:"fields.order",
+        "fields.parentTeam[match]":parentTeamName
+    }).then(res => (JSON.stringify({data:res}))).catch(err =>  JSON.stringify({error:err}))
+}
+
 const getTeamByTeamName = (teamNameShort) => {
     const client = connectContentful()
 
     return client.getEntries({
         content_type:"teams",
+        select:"fields",
+        order:"fields.order",
+        "fields.teamNameShort[match]":teamNameShort
+    }).then(res => (JSON.stringify({data:res}))).catch(err => JSON.stringify({error:err}))
+}
+
+const getLevel2TeamByTeamName = (teamNameShort) => {
+    const client = connectContentful()
+
+    return client.getEntries({
+        content_type:"teamsLevel2",
         select:"fields",
         order:"fields.order",
         "fields.teamNameShort[match]":teamNameShort
@@ -99,4 +122,4 @@ const getNews = ()=>{
     }).then(res => JSON.stringify({data:res})).catch(err =>  JSON.stringify({error:err}))
 }
 
-export {getWebSetting,getIntroduction, getTeams, getTeamByTeamName, getActivities, getActivityById, getNews, getTeamPageHeaders,getActivityPageSetting}
+export {getWebSetting,getIntroduction, getParentTeams, getTeamByTeamName, getActivities, getActivityById, getNews, getTeamPageHeaders,getActivityPageSetting, getLevel2Teams, getLevel2TeamByTeamName}

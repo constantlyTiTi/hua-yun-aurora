@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import SidebarItem from "@/app/components/SidebarItem";
 import { useRouter } from 'next/navigation'
-import {getTeams, getTeamPageHeaders} from '@/app/api/getContentful'
+import {getParentTeams, getTeamPageHeaders} from '@/app/api/getContentful'
 
 
 const Sidebar = () => {
@@ -12,7 +12,7 @@ const Sidebar = () => {
     const [header, setHeader] = useState()
 
     useEffect(()=>{
-        getTeams().then((res) => {
+        getParentTeams().then((res) => {
             const sidebarItems = JSON.parse(res)
             sidebarItems?.data?.items && setTeams(sidebarItems?.data?.items)
         })

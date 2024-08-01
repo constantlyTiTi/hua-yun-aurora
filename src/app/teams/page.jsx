@@ -17,7 +17,7 @@ const Page = () => {
     },[])
 
     return (
-        news && <div className="lg:w-dv-40 md:w-dv-50 text-center my-auto">
+        news && <div className="lg:w-dv-40 md:w-dv-50 my-auto">
 
 
             <Accordion id="newsDetailCollapse" variant="splitted" selectionMode="multiple" defaultExpandedKeys={["news-0"]} itemClasses={itemClasses}>

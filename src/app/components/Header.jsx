@@ -1,6 +1,6 @@
 'use client'
 import React,{useState,useEffect, useRef} from "react";
-import { getTeams } from "../api/getContentful";
+import { getParentTeams } from "../api/getContentful";
 import SidebarItem from "./SidebarItem";
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -8,7 +8,7 @@ import { getTeamPageHeaders} from '@/app/api/getContentful'
 
 const Header = ({ settings }) => {
 
-    const {header,iconHeaderImageUrl,backgroundImageUrl, headerTextColor,headerBackgroundColorLightMode, headerBackgroundColorDarkMode} = settings
+    const {header,iconHeaderImageUrl} = settings
 
     const [headerItems, setHeaderItems] = useState()
 
@@ -24,7 +24,7 @@ const Header = ({ settings }) => {
 
 
     useEffect(()=>{
-        getTeams().then(res=> setHeaderItems(JSON.parse(res).data.items)).catch(err=>console.log(err))
+        getParentTeams().then(res=> setHeaderItems(JSON.parse(res).data.items)).catch(err=>console.log(err))
         getTeamPageHeaders().then(res => {
 
             const jsonObj = JSON.parse(res)
