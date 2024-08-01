@@ -2,8 +2,7 @@ import Login from "@/app/components/Login";
 import React from "react";
 
 const Page = () => {
-
-    return <Login/>
-}
+  return <Login />;
+};
 
 export default Page;
