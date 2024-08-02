@@ -5,16 +5,16 @@ const ActivityCard = ({ dateTime, title, picUrl, activityId }) => {
   return (
     <div
       key={`div-1-${activityId}`}
-      className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+      className="max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800"
     >
       <Link key={`a-1-${activityId}`} href={`/activities/${activityId}`}>
         <picture
           key={`pic-1-${activityId}`}
-          className="rounded-lg overflow-hidden block"
+          className="block overflow-hidden rounded-lg"
         >
           <img
             key={`img-1-${activityId}`}
-            className="rounded-t-lg hover:scale-125 ease-in duration-150"
+            className="rounded-t-lg duration-150 ease-in hover:scale-125"
             src={picUrl}
             alt="thumbnail"
           />
@@ -36,12 +36,12 @@ const ActivityCard = ({ dateTime, title, picUrl, activityId }) => {
         <Link
           key={`a-3-${activityId}`}
           href={`/activities/${activityId}`}
-          className="inline-flex items-center mt-3 px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="mt-3 inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Read more
           <svg
             key={`svg-1-${activityId}`}
-            className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+            className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

@@ -6,12 +6,12 @@ export default async function TeamsLayout({
 }) {
   return (
     // <section className="flex w-dvw h-full flex-row">
-    <section className="w-svw relative top-0 flex flex-row h-full">
+    <section className="relative top-0 flex h-full w-svw flex-row">
       {/* Include shared UI here e.g. a header or sidebar */}
       <Sidebar />
 
-      <div className="sm:ml-64 p-4 flex-1">
-        <div className="border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+      <div className="flex-1 p-4 sm:ml-64">
+        <div className="rounded-lg border-2 border-dashed border-gray-200 dark:border-gray-700">
           {children}
         </div>
       </div>

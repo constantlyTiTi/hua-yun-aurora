@@ -50,7 +50,7 @@ const SubTeamPage = ({ params }) => {
     header && (
       <>
         <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
+          class="mb-4 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
           onClick={() => router.back()}
         >
           Go Back

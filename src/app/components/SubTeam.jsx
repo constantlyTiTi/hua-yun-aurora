@@ -29,7 +29,7 @@ const SubTeam = ({ team, header, activities }) => {
         >
           <div
             key="acc-2"
-            className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 "
+            className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
           >
             {team.teamLeaders.map((name) => (
               <div key={`leader-${name}`}>{name}</div>
@@ -81,7 +81,7 @@ const SubTeam = ({ team, header, activities }) => {
         >
           <div
             key="acc-6"
-            className="grid w-full grid-cols-1 md:grid-cols-3 gap-2"
+            className="grid w-full grid-cols-1 gap-2 md:grid-cols-3"
           >
             {activities.map((act) => (
               <ActivityCard
