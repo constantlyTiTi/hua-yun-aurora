@@ -22,7 +22,8 @@ const Sidebar = () => {
     });
   }, []);
 
-  const sidebarItemClick = (teamName) => {
+  const sidebarItemClick = (teamName, event) => {
+    event.preventDefault();
     router.push(`/teams/${teamName}`);
   };
 
@@ -43,7 +44,7 @@ const Sidebar = () => {
               <span className="ms-3">{header.teamNewsName} </span>
             </div>
             <div
-              onClick={() => router.push("/teams/orgnization")}
+              onClick={() => router.push("/teams/organization")}
               className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
             >
               <span className="ms-3">

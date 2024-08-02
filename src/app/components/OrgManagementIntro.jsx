@@ -20,7 +20,10 @@ const OrgManagementIntro = () => {
           key={`card-${index}`}
           className="grid grid-cols-1 gap-2 border-2 border-solid border-indigo-300 p-2 sm:grid-cols-2"
         >
-          <div key={`cardContent-${index}`} className="border-solid pl-5">
+          <div
+            key={`cardContent-${index}`}
+            className="border-solid p-2 sm:pl-5"
+          >
             <h2 key={`cardContentH2-${index}`} className="text-2xl">
               {member.fields.memberName}
             </h2>
