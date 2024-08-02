@@ -87,10 +87,10 @@ const Header = ({ settings }) => {
               </div>
             </div>
 
-            <div className="justify-right grid w-auto flex-none grid-cols-2 gap-4">
+            {/* <div className="justify-right grid w-auto flex-none grid-cols-2 gap-4">
               <Link href="/signup">Sign up</Link>
               <Link href="/login">Login</Link>
-            </div>
+            </div> */}
           </nav>
           <div
             ref={dropDownRef}
