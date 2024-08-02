@@ -14,13 +14,13 @@ const OrgManagementIntro = () => {
   }, []);
 
   return (
-    <>
+    <div className="grid grid-cols-1 gap-2">
       {teamMembers?.map((member, index) => (
         <div
           key={`card-${index}`}
           className="grid grid-cols-1 gap-2 border-2 border-solid border-indigo-300 p-2 sm:grid-cols-2"
         >
-          <div key={`cardContent-${index}`} className="border-solid">
+          <div key={`cardContent-${index}`} className="border-solid pl-5">
             <h2 key={`cardContentH2-${index}`} className="text-2xl">
               {member.fields.memberName}
             </h2>
@@ -55,14 +55,14 @@ const OrgManagementIntro = () => {
           <div>
             <img
               key={`cardContentImg-${index}`}
-              className="h-full w-auto"
+              className="m-auto h-64 w-auto sm:h-96"
               alt="portfolio img"
               src={member.fields.portfolioPicUrl}
             />
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 
