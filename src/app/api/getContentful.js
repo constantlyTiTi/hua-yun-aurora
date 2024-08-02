@@ -48,6 +48,19 @@ const getIntroduction = () => {
     .catch((err) => ({ error: err }));
 };
 
+const getOrganizationManagementTeamMembers = () => {
+  const client = connectContentful();
+
+  return client
+    .getEntries({
+      content_type: "organizationManagementTeamMember",
+      select: "fields",
+      order: "fields.order",
+    })
+    .then((res) => JSON.stringify({ data: res }))
+    .catch((err) => JSON.stringify({ error: err }));
+};
+
 const getTeamPageHeaders = () => {
   const client = connectContentful();
 
@@ -179,4 +192,5 @@ export {
   getLevel2Teams,
   getLevel2TeamByTeamName,
   getAuthSetting,
+  getOrganizationManagementTeamMembers,
 };

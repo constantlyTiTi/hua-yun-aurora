@@ -110,7 +110,7 @@ const Login = ({ setting }) => {
         </div>
         <div className="hidden flex-1 bg-indigo-100 text-center lg:flex">
           <div className="m-12 w-full xl:m-16">
-            <img src={loginImageUrl} />
+            <img src={loginImageUrl} alt="login image" />
           </div>
         </div>
       </div>

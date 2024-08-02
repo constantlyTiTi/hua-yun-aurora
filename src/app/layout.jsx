@@ -24,11 +24,11 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         {settings && (
-          <div className="relative h-svh flex flex-col w-svw">
+          <div className="relative flex h-svh w-svw flex-col">
             <Suspense fallback={<Loading />}>
               <Header settings={settings} />
               <ErrorBoundary fallback={<NotFound />}>
-                <div className="flex-1 flex">{children}</div>
+                <div className="flex flex-1">{children}</div>
               </ErrorBoundary>
             </Suspense>
 
