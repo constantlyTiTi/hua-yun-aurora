@@ -141,6 +141,20 @@ const Header = ({ settings }) => {
               )}
             </Link>
 
+            <Link
+              href="/teams/organization"
+              onClick={() => setIsDisplayDropDown(!isDisplayDropDown)}
+              key="header-teamOrg"
+              className="ms-3 block items-center"
+            >
+              {headerTitles && (
+                <div className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                  {" "}
+                  {headerTitles.teamOrganizationManagementName}
+                </div>
+              )}
+            </Link>
+
             {headerItems?.map((t) => (
               <SidebarItem
                 onclick={sidebarItemClick}

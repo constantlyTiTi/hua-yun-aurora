@@ -29,18 +29,28 @@ const Sidebar = () => {
   return (
     <aside
       id="sidebar-multi-level-sidebar"
-      className="absolute flex-none top-0 left-0 z-30 w-64 h-full transition-transform -translate-x-full sm:translate-x-0"
+      className="absolute left-0 top-0 z-30 h-full w-64 flex-none -translate-x-full transition-transform sm:translate-x-0"
       aria-label="Sidebar"
     >
-      <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 space-y-2 font-medium">
+      <div className="h-full space-y-2 overflow-y-auto bg-gray-50 px-3 py-4 font-medium dark:bg-gray-800">
         {/* <ul className="space-y-2 font-medium"> */}
         {header && (
-          <div
-            onClick={() => router.push("/teams")}
-            className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-          >
-            <span className="ms-3">{header.teamNewsName} </span>
-          </div>
+          <>
+            <div
+              onClick={() => router.push("/teams")}
+              className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+            >
+              <span className="ms-3">{header.teamNewsName} </span>
+            </div>
+            <div
+              onClick={() => router.push("/teams/orgnization")}
+              className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+            >
+              <span className="ms-3">
+                {header.teamOrganizationManagementName}{" "}
+              </span>
+            </div>
+          </>
         )}
 
         {teams?.map((t) => (

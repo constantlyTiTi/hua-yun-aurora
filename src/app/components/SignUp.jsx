@@ -106,7 +106,7 @@ const SignUp = ({ setting }) => {
         </div>
         <div className="hidden flex-1 bg-indigo-100 text-center lg:flex">
           <div className="m-12 w-full xl:m-16">
-            <img src={signupImageUrl} />
+            <img src={signupImageUrl} alt="sign up image" />
           </div>
         </div>
       </div>
