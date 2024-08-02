@@ -1,5 +1,6 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const Login = ({ setting }) => {
   const signupTitle = setting.signupTitle;
@@ -9,6 +10,8 @@ const Login = ({ setting }) => {
   const googleLoginTitle = setting.googleLoginTitle;
   const loginWithEmail = setting.loginWithEmail;
   const loginImageUrl = setting.loginImageUrl;
+
+  const [loginForm, setLoginForm] = useState();
 
   return (
     <div className="mx-auto mt-10 flex h-auto justify-center bg-gray-100 text-gray-900">
@@ -69,11 +72,17 @@ const Login = ({ setting }) => {
                   className="w-full rounded-lg border border-gray-200 bg-gray-100 px-8 py-4 text-sm font-medium placeholder-gray-500 focus:border-gray-400 focus:bg-white focus:outline-none"
                   type="email"
                   placeholder={emailTitle}
+                  onChange={(event) =>
+                    setLoginForm({ ...loginForm, email: event.target.value })
+                  }
                 />
                 <input
                   className="mt-5 w-full rounded-lg border border-gray-200 bg-gray-100 px-8 py-4 text-sm font-medium placeholder-gray-500 focus:border-gray-400 focus:bg-white focus:outline-none"
                   type="password"
                   placeholder={passwordTitle}
+                  onChange={(event) =>
+                    setLoginForm({ ...loginForm, password: event.target.value })
+                  }
                 />
                 <button className="focus:shadow-outline mt-5 flex w-full items-center justify-center rounded-lg bg-indigo-500 py-4 font-semibold tracking-wide text-gray-100 transition-all duration-300 ease-in-out hover:bg-indigo-700 focus:outline-none">
                   <svg
