@@ -43,13 +43,12 @@ const OrgManagementIntro = () => {
               </a>
             )}
             {member.fields.tel && (
-              <a
+              <p
                 key={`cardContentTel-${index}`}
                 className="mt-2 block text-base"
-                href={`+1${member.fields.tel}`}
               >
                 Tel: +1 {member.fields.tel}
-              </a>
+              </p>
             )}
 
             <div
