@@ -20,6 +20,7 @@ const ActivityDetails = ({
   const [imageIndex, setImageIndex] = useState();
 
   useEffect(() => {
+    document.body.style.overflow = "unset";
     getActivityPageSetting().then((res) => {
       const jsonObj = JSON.parse(res);
 

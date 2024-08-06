@@ -33,6 +33,14 @@ const OrgManagementIntro = () => {
             >
               {member.fields.occupation}
             </p>
+            {member.fields.tel && (
+              <p
+                key={`cardContentTel-${index}`}
+                className="mt-2 block text-base"
+              >
+                Tel: +1 {member.fields.tel}
+              </p>
+            )}
             {member.fields.email && (
               <a
                 key={`cardContentEmail-${index}`}
@@ -41,14 +49,6 @@ const OrgManagementIntro = () => {
               >
                 Email: {member.fields.email}
               </a>
-            )}
-            {member.fields.tel && (
-              <p
-                key={`cardContentTel-${index}`}
-                className="mt-2 block text-base"
-              >
-                Tel: +1 {member.fields.tel}
-              </p>
             )}
 
             <div

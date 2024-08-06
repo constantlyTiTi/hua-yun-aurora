@@ -11,7 +11,7 @@ const SubTeam = ({ team, header, activities }) => {
       id="teamDetailCollapse"
       variant="splitted"
       selectionMode="multiple"
-      defaultExpandedKeys={["1", "6"]}
+      defaultExpandedKeys={["1", "5"]}
       itemClasses={itemClasses}
     >
       <AccordionItem
@@ -64,23 +64,14 @@ const SubTeam = ({ team, header, activities }) => {
           {team.description && documentToReactComponents(team.description)}
         </div>
       </AccordionItem>
-      <AccordionItem
-        key="5"
-        aria-label={header.contactName}
-        title={header.contactName}
-      >
-        <div key="acc-5" className="grid w-full">
-          {team.contacts && documentToReactComponents(team.contacts)}
-        </div>
-      </AccordionItem>
       {activities?.length > 0 && (
         <AccordionItem
-          key="6"
+          key="5"
           aria-label={header.teamActivityName}
           title={header.teamActivityName}
         >
           <div
-            key="acc-6"
+            key="acc-5"
             className="grid w-full grid-cols-1 gap-2 md:grid-cols-3"
           >
             {activities.map((act) => (
