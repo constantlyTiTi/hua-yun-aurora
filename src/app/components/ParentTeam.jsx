@@ -67,7 +67,7 @@ const ParentTeam = ({ team, header }) => {
             <img
               key={`sub-img-${st.fields.teamNameShort}`}
               src={st.fields.teamThumbnailImageUrl}
-              class="mx-auto h-64 w-64 rounded-full shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30"
+              className="mx-auto h-64 w-64 rounded-full shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30"
               alt={`${st.fields.teamNameFull} thumbnail image`}
             />
             <h3
