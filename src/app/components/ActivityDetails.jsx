@@ -4,6 +4,7 @@ import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { getActivityPageSetting } from "@/app/api/getContentful";
 
 import { itemClasses } from "@/app/const/css";
+import ImageGallery from "./ImageGallery";
 
 const ActivityDetails = ({
   title,
@@ -16,7 +17,7 @@ const ActivityDetails = ({
 
   const [isScaleOpen, setIsScaleOpen] = useState(false);
 
-  const [scaleImageUrl, setScaleImageUrl] = useState();
+  const [imageIndex, setImageIndex] = useState();
 
   useEffect(() => {
     getActivityPageSetting().then((res) => {
@@ -26,19 +27,28 @@ const ActivityDetails = ({
     });
   }, []);
 
-  const imageOnClick = (src) => {
-    setScaleImageUrl(src);
+  const imageOnClick = (index) => {
+    setImageIndex(index);
     setIsScaleOpen(true);
+    document.body.style.overflow = "hidden";
   };
 
   const closeScaleImage = () => {
     setIsScaleOpen(false);
+    document.body.style.overflow = "unset";
   };
 
   return (
     setting && (
       <div className="grid w-full gap-3 p-3 text-left">
-        <div
+        <ImageGallery
+          isScaleOpen={isScaleOpen}
+          imgIndex={imageIndex}
+          setImageIndex={setImageIndex}
+          images={picsUrls}
+          closeScaleImage={closeScaleImage}
+        />
+        {/* <div
           className={`fixed left-0 top-0 z-50 flex h-svh w-full flex-col overflow-auto bg-black ${isScaleOpen ? "block" : "hidden"}`}
         >
           <div className="group flex justify-end p-2">
@@ -60,7 +70,6 @@ const ActivityDetails = ({
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </div>
-          {/* <div className="h-5/6 bg-white w-5/6 m-auto"> */}
           {scaleImageUrl && (
             <img
               className="m-auto h-auto w-auto rounded-lg p-3"
@@ -68,8 +77,7 @@ const ActivityDetails = ({
               alt="activity picture"
             />
           )}
-          {/* </div> */}
-        </div>
+        </div> */}
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {title}
         </h5>
@@ -106,7 +114,7 @@ const ActivityDetails = ({
                 className="grid w-full grid-cols-1 gap-3 sm:grid-cols-3"
               >
                 {picsUrls.map((url, index) => (
-                  <div onClick={() => imageOnClick(url)} key={`pic-${index}`}>
+                  <div onClick={() => imageOnClick(index)} key={`pic-${index}`}>
                     {" "}
                     <img
                       className="h-auto max-w-full rounded-lg"
