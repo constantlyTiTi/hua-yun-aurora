@@ -179,6 +179,32 @@ const getNews = () => {
     .catch((err) => JSON.stringify({ error: err }));
 };
 
+const getManagementLevelResponsiblities = () => {
+  const client = connectContentful();
+
+  return client
+    .getEntries({
+      content_type: "managementLevelResponsibilities",
+      select: "fields",
+    })
+    .then((res) => JSON.stringify({ data: res }))
+    .catch((err) => JSON.stringify({ error: err }));
+};
+
+const getActivityByResponsiblity = (responsibilityShortName) => {
+  const client = connectContentful();
+
+  return client
+    .getEntries({
+      content_type: "activities",
+      select: "fields",
+      order: "-fields.dateTime",
+      "fields.responsibilityShortName[match]": responsibilityShortName,
+    })
+    .then((res) => JSON.stringify({ data: res }))
+    .catch((err) => JSON.stringify({ error: err }));
+};
+
 export {
   getWebSetting,
   getIntroduction,
@@ -193,4 +219,6 @@ export {
   getLevel2TeamByTeamName,
   getAuthSetting,
   getOrganizationManagementTeamMembers,
+  getManagementLevelResponsiblities,
+  getActivityByResponsiblity,
 };
