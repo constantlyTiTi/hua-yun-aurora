@@ -1,15 +1,26 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { getOrganizationManagementTeamMembers } from "@/app/api/getContentful";
+import {
+  getOrganizationManagementTeamMembers,
+  getManagementLevelResponsiblities,
+} from "@/app/api/getContentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Link from "next/link";
 
 const OrgManagementIntro = () => {
   const [teamMembers, setTeamMemembers] = useState();
+  const [responsibilites, setResponsiblities] = useState();
 
   useEffect(() => {
     getOrganizationManagementTeamMembers().then((res) => {
       const membersData = JSON.parse(res);
       membersData?.data?.items && setTeamMemembers(membersData?.data?.items);
+    });
+
+    getManagementLevelResponsiblities().then((res) => {
+      const resp = JSON.parse(res);
+      console.log("resp", resp?.data?.items);
+      resp?.data?.items && setResponsiblities(resp?.data?.items);
     });
   }, []);
 
@@ -33,6 +44,44 @@ const OrgManagementIntro = () => {
             >
               {member.fields.occupation}
             </p>
+
+            <div
+              key={`cardContentDes-${index}`}
+              className="mt-2 text-wrap break-all text-base"
+            >
+              {documentToReactComponents(member.fields.description)}
+            </div>
+            <div key={`cardContentResponsibilites-${index}`} className="mt-5">
+              {responsibilites?.map(
+                (res, index) =>
+                  res.fields.staffNames?.find(
+                    (name) => name === member.fields.memberName,
+                  ) && (
+                    <Link
+                      key={`responsibilityLink-${index}`}
+                      href={`/activities/managementResponsibility/${res.fields.responsibilityShortName}`}
+                      class="inline-flex items-center justify-center rounded-lg bg-gray-50 p-5 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                    >
+                      <span
+                        key={`responsibilityLinkSpan-${index}`}
+                        class="w-full"
+                      >
+                        {res.fields.responsibilityName}
+                      </span>
+                    </Link>
+                  ),
+              )}
+            </div>
+          </div>
+
+          <div className="text-center">
+            <img
+              key={`cardContentImg-${index}`}
+              className="m-auto h-64 w-auto sm:h-96"
+              alt="portfolio img"
+              src={member.fields.portfolioPicUrl}
+            />
+
             {member.fields.tel && (
               <p
                 key={`cardContentTel-${index}`}
@@ -50,22 +99,6 @@ const OrgManagementIntro = () => {
                 Email: {member.fields.email}
               </a>
             )}
-
-            <div
-              key={`cardContentDes-${index}`}
-              className="mt-2 text-wrap break-all text-base"
-            >
-              {documentToReactComponents(member.fields.description)}
-            </div>
-          </div>
-
-          <div>
-            <img
-              key={`cardContentImg-${index}`}
-              className="m-auto h-64 w-auto sm:h-96"
-              alt="portfolio img"
-              src={member.fields.portfolioPicUrl}
-            />
           </div>
         </div>
       ))}
