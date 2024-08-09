@@ -12,8 +12,8 @@ const Introduction = async () => {
 
   return (
     introduction && (
-      <div className="grid w-full content-start gap-4 md:grid-cols-2">
-        <div className="lg:w-dv-60 md:w-dv-50 px-2">
+      <div className="md:flex-cols-2 flex w-full content-start gap-5">
+        <div className="flex-none">
           {introduction?.introductionImageUrl && (
             <img
               className="h-auto max-w-full rounded-lg"
@@ -22,7 +22,7 @@ const Introduction = async () => {
             />
           )}
         </div>
-        <div className="lg:w-dv-40 md:w-dv-50 my-auto px-5 text-center">
+        <div className="m-auto flex-1 px-5 text-center">
           {richText}
           <Link
             type="button"
