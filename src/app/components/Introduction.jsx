@@ -12,7 +12,7 @@ const Introduction = async () => {
 
   return (
     introduction && (
-      <div className="md:flex-cols-2 flex w-full content-start gap-5">
+      <div className="flex w-full flex-col content-start gap-5 md:flex-row">
         <div className="flex-none">
           {introduction.introductionImageUrl && (
             <img
