@@ -21,7 +21,6 @@ const OrgManagementIntro = () => {
 
     getManagementLevelResponsiblities(locale).then((res) => {
       const resp = JSON.parse(res);
-      console.log("resp", resp?.data?.items);
       resp?.data?.items && setResponsiblities(resp?.data?.items);
     });
   }, []);
