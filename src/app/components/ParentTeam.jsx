@@ -13,11 +13,13 @@ const ParentTeam = ({ team, header }) => {
   const router = useRouter();
 
   useEffect(() => {
-    getLevel2Teams(team.teamNameShort, locale).then((res) => {
-      const subTeamsData = JSON.parse(res);
-      subTeamsData?.data?.items && setSubTeams(subTeamsData?.data?.items);
-    });
-  }, [team]);
+    if (locale) {
+      getLevel2Teams(team.teamNameShort, locale).then((res) => {
+        const subTeamsData = JSON.parse(res);
+        subTeamsData?.data?.items && setSubTeams(subTeamsData?.data?.items);
+      });
+    }
+  }, [locale]);
 
   const clickImage = (subTeamName) => {
     router.push(`/teams/${team.teamNameShort}/${subTeamName}`);

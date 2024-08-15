@@ -130,7 +130,9 @@ const Header = ({ settings }) => {
                   className={`h-8 w-8 ${isCN ? "right-8" : "left-8"} absolute transform rounded-full bg-gray-200 transition-transform`}
                 />
               </label>
-              <div>{/* <Link href="/login">Login/Sign up</Link> */}</div>
+              <div>
+                <Link href="/login">Login/Sign up</Link>
+              </div>
             </div>
           </nav>
           <div

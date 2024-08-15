@@ -13,14 +13,15 @@ const Page = ({ params }) => {
   const locale = useSelector((state) => state.locale.value);
 
   useEffect(() => {
-    getActivityByResponsiblity(responsibilityShortName, locale)
-      .then((res) => {
-        const jsonObj = JSON.parse(res);
+    locale &&
+      getActivityByResponsiblity(responsibilityShortName, locale)
+        .then((res) => {
+          const jsonObj = JSON.parse(res);
 
-        jsonObj.data.items.length > 0 && setActivities(jsonObj.data.items);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+          jsonObj.data.items.length > 0 && setActivities(jsonObj.data.items);
+        })
+        .catch((error) => console.log(error));
+  }, [locale]);
 
   return (
     activities && (

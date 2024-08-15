@@ -14,6 +14,7 @@ const TeamPage = ({ params }) => {
 
   useEffect(() => {
     searchItem &&
+      locale &&
       getTeamByTeamName(searchItem, locale)
         .then((res) => {
           const jsonObj = JSON.parse(res);
@@ -23,12 +24,14 @@ const TeamPage = ({ params }) => {
         })
         .catch((error) => console.log(error));
 
-    getTeamPageHeaders(locale).then((res) => {
-      const jsonObj = JSON.parse(res);
+    locale &&
+      getTeamPageHeaders(locale).then((res) => {
+        const jsonObj = JSON.parse(res);
 
-      jsonObj.data.items.length > 0 && setHeader(jsonObj.data.items[0].fields);
-    });
-  }, [searchItem]);
+        jsonObj.data.items.length > 0 &&
+          setHeader(jsonObj.data.items[0].fields);
+      });
+  }, [searchItem, locale]);
 
   return team && header && <ParentTeam team={team} header={header} />;
 };

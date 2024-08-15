@@ -14,16 +14,18 @@ const OrgManagementIntro = () => {
   const locale = useSelector((state) => state.locale.value);
 
   useEffect(() => {
-    getOrganizationManagementTeamMembers(locale).then((res) => {
-      const membersData = JSON.parse(res);
-      membersData?.data?.items && setTeamMemembers(membersData?.data?.items);
-    });
+    if (locale) {
+      getOrganizationManagementTeamMembers(locale).then((res) => {
+        const membersData = JSON.parse(res);
+        membersData?.data?.items && setTeamMemembers(membersData?.data?.items);
+      });
 
-    getManagementLevelResponsiblities(locale).then((res) => {
-      const resp = JSON.parse(res);
-      resp?.data?.items && setResponsiblities(resp?.data?.items);
-    });
-  }, []);
+      getManagementLevelResponsiblities(locale).then((res) => {
+        const resp = JSON.parse(res);
+        resp?.data?.items && setResponsiblities(resp?.data?.items);
+      });
+    }
+  }, [locale]);
 
   return (
     <div className="grid grid-cols-1 gap-2">

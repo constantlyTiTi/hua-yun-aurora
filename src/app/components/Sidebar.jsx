@@ -12,17 +12,20 @@ const Sidebar = () => {
   const locale = useSelector((state) => state.locale.value);
 
   useEffect(() => {
-    getParentTeams(locale).then((res) => {
-      const sidebarItems = JSON.parse(res);
-      sidebarItems?.data?.items && setTeams(sidebarItems?.data?.items);
-    });
+    if (locale) {
+      getParentTeams(locale).then((res) => {
+        const sidebarItems = JSON.parse(res);
+        sidebarItems?.data?.items && setTeams(sidebarItems?.data?.items);
+      });
 
-    getTeamPageHeaders(locale).then((res) => {
-      const jsonObj = JSON.parse(res);
+      getTeamPageHeaders(locale).then((res) => {
+        const jsonObj = JSON.parse(res);
 
-      jsonObj.data.items.length > 0 && setHeader(jsonObj.data.items[0].fields);
-    });
-  }, []);
+        jsonObj.data.items.length > 0 &&
+          setHeader(jsonObj.data.items[0].fields);
+      });
+    }
+  }, [locale]);
 
   const sidebarItemClick = (teamName, event) => {
     event.preventDefault();
