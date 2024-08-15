@@ -17,15 +17,17 @@ const Page = () => {
 
   useEffect(() => {
     activityId &&
+      locale &&
       getActivityById(activityId, locale)
         .then((res) => {
           const response = JSON.parse(res).data.fields;
+
           setRichText(documentToReactComponents(response.description));
 
           setActivity(response);
         })
         .catch((error) => console.log(error));
-  }, [activityId]);
+  }, [locale]);
 
   return (
     activity && (
