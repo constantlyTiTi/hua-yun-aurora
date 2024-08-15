@@ -1,8 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
 import localeSlice from "@/app/slice/localeSlice";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-export default configureStore({
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, localeSlice);
+
+export const store = configureStore({
   reducer: {
-    locale: localeSlice,
+    locale: persistedReducer,
   },
 });
+
+export const persistor = persistStore(store);
