@@ -37,12 +37,12 @@ h1{
   font-weight: 600;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-p{
+#introductionText > h1,
+#introductionText > h2,
+#introductionText > h3,
+#introductionText > h4,
+#introductionText > h5,
+#introductionText > p{
   margin: 2%;
 }
 
