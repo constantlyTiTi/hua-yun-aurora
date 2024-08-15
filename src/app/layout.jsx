@@ -7,6 +7,7 @@ import Loading from "./Loading";
 import Footer from "./components/Footer";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import NotFound from "./not-found";
+import LocaleProvider from "./provider/createProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,18 +24,20 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        {settings && (
-          <div className="relative flex h-svh w-svw flex-col">
-            <Suspense fallback={<Loading />}>
-              <Header settings={settings} />
-              <ErrorBoundary fallback={<NotFound />}>
-                <div className="flex flex-1">{children}</div>
-              </ErrorBoundary>
-            </Suspense>
+        <LocaleProvider>
+          {settings && (
+            <div className="relative flex h-svh w-svw flex-col">
+              <Suspense fallback={<Loading />}>
+                <Header settings={settings} />
+                <ErrorBoundary fallback={<NotFound />}>
+                  <div className="flex-1">{children}</div>
+                </ErrorBoundary>
+              </Suspense>
 
-            <Footer />
-          </div>
-        )}
+              <Footer />
+            </div>
+          )}
+        </LocaleProvider>
       </body>
     </html>
   );

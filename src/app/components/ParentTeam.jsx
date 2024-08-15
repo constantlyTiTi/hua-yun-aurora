@@ -4,14 +4,16 @@ import { getLevel2Teams } from "@/app/api/getContentful";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { useRouter } from "next/navigation";
 import { itemClasses } from "@/app/const/css";
+import { useSelector } from "react-redux";
 
 const ParentTeam = ({ team, header }) => {
   const [subTeams, setSubTeams] = useState();
+  const locale = useSelector((state) => state.locale.value);
 
   const router = useRouter();
 
   useEffect(() => {
-    getLevel2Teams(team.teamNameShort).then((res) => {
+    getLevel2Teams(team.teamNameShort, locale).then((res) => {
       const subTeamsData = JSON.parse(res);
       subTeamsData?.data?.items && setSubTeams(subTeamsData?.data?.items);
     });

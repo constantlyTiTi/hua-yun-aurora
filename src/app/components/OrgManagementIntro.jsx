@@ -6,20 +6,21 @@ import {
 } from "@/app/api/getContentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const OrgManagementIntro = () => {
   const [teamMembers, setTeamMemembers] = useState();
   const [responsibilites, setResponsiblities] = useState();
+  const locale = useSelector((state) => state.locale.value);
 
   useEffect(() => {
-    getOrganizationManagementTeamMembers().then((res) => {
+    getOrganizationManagementTeamMembers(locale).then((res) => {
       const membersData = JSON.parse(res);
       membersData?.data?.items && setTeamMemembers(membersData?.data?.items);
     });
 
-    getManagementLevelResponsiblities().then((res) => {
+    getManagementLevelResponsiblities(locale).then((res) => {
       const resp = JSON.parse(res);
-      console.log("resp", resp?.data?.items);
       resp?.data?.items && setResponsiblities(resp?.data?.items);
     });
   }, []);
@@ -60,11 +61,11 @@ const OrgManagementIntro = () => {
                     <Link
                       key={`responsibilityLink-${index}`}
                       href={`/activities/managementResponsibility/${res.fields.responsibilityShortName}`}
-                      class="inline-flex items-center justify-center rounded-lg bg-gray-50 p-5 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                      className="inline-flex items-center justify-center rounded-lg bg-gray-50 p-5 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                     >
                       <span
                         key={`responsibilityLinkSpan-${index}`}
-                        class="w-full"
+                        className="w-full"
                       >
                         {res.fields.responsibilityName}
                       </span>

@@ -5,6 +5,11 @@ import SidebarItem from "./SidebarItem";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { getTeamPageHeaders } from "@/app/api/getContentful";
+import { EN_LOCALE, DEFAULT_LOCALE } from "@/app/const/locale";
+
+import { useSelector, useDispatch } from "react-redux";
+
+import { setLocale } from "@/app/slice/localeSlice";
 
 const Header = ({ settings }) => {
   const { header, iconHeaderImageUrl } = settings;
@@ -12,6 +17,15 @@ const Header = ({ settings }) => {
   const [headerItems, setHeaderItems] = useState();
 
   const [headerTitles, setHeaderTitles] = useState();
+
+  const [isCN, setIsCN] = useState(true);
+
+  // const {locale} = useContext(LocaleContext);
+
+  // const [_, setLocaleContext] = locale
+
+  const locale = useSelector((state) => state.locale.value);
+  const dispatch = useDispatch();
 
   const [isDisplayDropDown, setIsDisplayDropDown] = useState(false);
 
@@ -22,16 +36,25 @@ const Header = ({ settings }) => {
   const iconRef = useRef();
 
   useEffect(() => {
-    getParentTeams()
-      .then((res) => setHeaderItems(JSON.parse(res).data.items))
-      .catch((err) => console.log(err));
-    getTeamPageHeaders().then((res) => {
-      const jsonObj = JSON.parse(res);
+    isCN ? dispatch(setLocale(DEFAULT_LOCALE)) : dispatch(setLocale(EN_LOCALE));
+  }, [isCN]);
 
-      jsonObj.data.items.length > 0 &&
-        setHeaderTitles(jsonObj.data.items[0].fields);
-    });
-  }, []);
+  useEffect(() => {
+    if (locale) {
+      getParentTeams(locale)
+        .then((res) => setHeaderItems(JSON.parse(res).data.items))
+        .catch((err) => console.log(err));
+
+      getTeamPageHeaders(locale)
+        .then((res) => {
+          const jsonObj = JSON.parse(res);
+
+          jsonObj.data.items.length > 0 &&
+            setHeaderTitles(jsonObj.data.items[0].fields);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [locale]);
 
   const sidebarItemClick = (teamName) => {
     router.push(`/teams/${teamName}`);
@@ -64,7 +87,7 @@ const Header = ({ settings }) => {
       <>
         <header className="relative sticky top-0 z-40 flex h-20 w-full flex-none flex-col overflow-visible bg-white shadow-lg">
           <nav
-            className="h-25 flex items-center py-6 lg:px-8"
+            className="flex h-20 items-center py-6 lg:px-8"
             aria-label="Global"
           >
             <div
@@ -79,7 +102,7 @@ const Header = ({ settings }) => {
               />
             </div>
 
-            <div className="w-64 flex-1 justify-center">
+            <div className="grow justify-center">
               <div className="justify-none relative">
                 <h5 className="text-lg font-semibold leading-6 text-gray-900">
                   {header}
@@ -87,10 +110,30 @@ const Header = ({ settings }) => {
               </div>
             </div>
 
-            {/* <div className="justify-right grid w-auto flex-none grid-cols-2 gap-4">
-              <Link href="/signup">Sign up</Link>
-              <Link href="/login">Login</Link>
-            </div> */}
+            <div className="justify-right flex w-auto flex-none grid-cols-2 gap-2 p-2">
+              <label className="relative block flex w-max cursor-pointer select-none items-center">
+                <input
+                  type="checkbox"
+                  value={isCN}
+                  onChange={() => setIsCN(!isCN)}
+                  className="h-8 w-16 cursor-pointer appearance-none rounded-full bg-red-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black"
+                />
+                <span className="absolute right-1 p-1 text-xs font-medium uppercase text-white">
+                  {" "}
+                  CN{" "}
+                </span>
+                <span className="absolute right-8 p-1 text-xs font-medium uppercase text-white">
+                  {" "}
+                  EN{" "}
+                </span>
+                <span
+                  className={`h-8 w-8 ${isCN ? "right-8" : "left-8"} absolute transform rounded-full bg-gray-200 transition-transform`}
+                />
+              </label>
+              <div>
+                <Link href="/login">Login/Sign up</Link>
+              </div>
+            </div>
           </nav>
           <div
             ref={dropDownRef}

@@ -3,19 +3,21 @@ import React, { useEffect, useState } from "react";
 import SidebarItem from "@/app/components/SidebarItem";
 import { useRouter } from "next/navigation";
 import { getParentTeams, getTeamPageHeaders } from "@/app/api/getContentful";
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
   const router = useRouter();
   const [teams, setTeams] = useState();
   const [header, setHeader] = useState();
+  const locale = useSelector((state) => state.locale.value);
 
   useEffect(() => {
-    getParentTeams().then((res) => {
+    getParentTeams(locale).then((res) => {
       const sidebarItems = JSON.parse(res);
       sidebarItems?.data?.items && setTeams(sidebarItems?.data?.items);
     });
 
-    getTeamPageHeaders().then((res) => {
+    getTeamPageHeaders(locale).then((res) => {
       const jsonObj = JSON.parse(res);
 
       jsonObj.data.items.length > 0 && setHeader(jsonObj.data.items[0].fields);

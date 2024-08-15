@@ -1,29 +1,40 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { getIntroduction } from "@/app/api/getContentful";
+import { useSelector } from "react-redux";
 
-const Introduction = async () => {
-  const intro = await getIntroduction();
+const Introduction = () => {
+  const locale = useSelector((state) => state.locale.value);
 
-  const introduction = intro?.data?.items[0]?.fields;
+  const [introduction, setIntroduction] = useState();
 
-  const richText = documentToReactComponents(introduction.groupDescription);
+  useEffect(() => {
+    if (locale) {
+      getIntroduction(locale).then((res) => {
+        const jsonObj = JSON.parse(res);
+
+        jsonObj.data.items.length > 0 &&
+          setIntroduction(jsonObj.data.items[0].fields);
+      });
+    }
+  }, [locale]);
 
   return (
     introduction && (
       <div className="flex w-full flex-col content-start gap-5 md:flex-row">
-        <div className="flex-none">
+        <div className="flex size-full sm:size-7/12 md:size-5/12">
           {introduction.introductionImageUrl && (
             <img
-              className="h-auto max-w-full rounded-lg"
+              className="rounded-lg"
               src={introduction.introductionImageUrl}
               alt="group desciption picture"
             />
           )}
         </div>
         <div className="m-auto flex-1 px-5 text-center">
-          {richText}
+          {documentToReactComponents(introduction.groupDescription)}
           <Link
             type="button"
             href="/teams"

@@ -7,6 +7,7 @@ import {
 } from "@/app/api/getContentful";
 import SubTeam from "@/app/components/SubTeam";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 
 const SubTeamPage = ({ params }) => {
   const searchItem = params.subTeamName;
@@ -17,11 +18,13 @@ const SubTeamPage = ({ params }) => {
 
   const [activities, setActivities] = useState();
 
+  const locale = useSelector((state) => state.locale.value);
+
   const router = useRouter();
 
   useEffect(() => {
     searchItem &&
-      getLevel2TeamByTeamName(searchItem)
+      getLevel2TeamByTeamName(searchItem, locale)
         .then((res) => {
           const jsonObj = JSON.parse(res);
 
@@ -31,14 +34,14 @@ const SubTeamPage = ({ params }) => {
         .catch((error) => console.log(error));
 
     searchItem &&
-      getActivities(searchItem)
+      getActivities(searchItem, locale)
         .then((res) => {
           const jsonObj = JSON.parse(res);
           setActivities(jsonObj.data.items);
         })
         .catch((error) => console.log(error));
 
-    getTeamPageHeaders().then((res) => {
+    getTeamPageHeaders(locale).then((res) => {
       const jsonObj = JSON.parse(res);
 
       jsonObj.data.items.length > 0 && setHeader(jsonObj.data.items[0].fields);

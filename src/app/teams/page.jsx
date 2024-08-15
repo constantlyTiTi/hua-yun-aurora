@@ -4,12 +4,14 @@ import { getNews } from "../api/getContentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { itemClasses } from "@/app/const/css";
+import { useSelector } from "react-redux";
 
 const Page = () => {
   const [news, setNews] = useState();
+  const locale = useSelector((state) => state.locale.value);
 
   useEffect(() => {
-    getNews().then((res) => {
+    getNews(locale).then((res) => {
       const newsdata = JSON.parse(res).data?.items;
       setNews(newsdata);
     });

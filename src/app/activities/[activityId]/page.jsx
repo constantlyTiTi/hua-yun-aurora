@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { getActivityById } from "@/app/api/getContentful";
 import ActivityDetails from "@/app/components/ActivityDetails";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { useSelector } from "react-redux";
 
 const Page = () => {
   const pathName = usePathname();
@@ -12,10 +13,11 @@ const Page = () => {
   const [richText, setRichText] = useState();
 
   const [activity, setActivity] = useState();
+  const locale = useSelector((state) => state.locale.value);
 
   useEffect(() => {
     activityId &&
-      getActivityById(activityId)
+      getActivityById(activityId, locale)
         .then((res) => {
           const response = JSON.parse(res).data.fields;
           setRichText(documentToReactComponents(response.description));
