@@ -75,9 +75,9 @@ const ImageGallery = ({
               >
                 <path
                   stroke="currentColor"
-                  cstrokeLinecap="round"
+                  cstroke-linecap="round"
                   strokeLinejoin="round"
-                  strstrokeWidth="2"
+                  strstroke-width="2"
                   d="M5 1 1 5l4 4"
                 />
               </svg>
@@ -99,9 +99,9 @@ const ImageGallery = ({
               >
                 <path
                   stroke="currentColor"
-                  cstrokeLinecap="round"
+                  cstroke-linecap="round"
                   strokeLinejoin="round"
-                  strstrokeWidth="2"
+                  strstroke-width="2"
                   d="m1 9 4-4-4-4"
                 />
               </svg>

@@ -67,7 +67,7 @@ const ActivityDetails = ({
             aria-label={setting.activityDateHeader}
             title={setting.activityDateHeader}
           >
-            {dateTime.split("T")[0]}
+            {dateTime?.split("T")[0]}
           </AccordionItem>
           <AccordionItem
             key="2"

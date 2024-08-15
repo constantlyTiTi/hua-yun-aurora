@@ -171,7 +171,7 @@ const getActivityById = (activityId, locale) => {
   const client = connectContentful();
 
   return client
-    .getEntry({ entry_id: activityId, locale: locale })
+    .getEntry(activityId, { locale: locale })
     .then((res) => JSON.stringify({ data: res }))
     .catch((err) => JSON.stringify({ error: err }));
 };
