@@ -33,7 +33,7 @@ const Introduction = () => {
             />
           )}
         </div>
-        <div className="m-auto flex-1 px-5 text-center">
+        <div className="m-auto flex-1 px-5 text-center" id="introductionText">
           {documentToReactComponents(introduction.groupDescription)}
           <Link
             type="button"
