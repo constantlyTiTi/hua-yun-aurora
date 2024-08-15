@@ -18,14 +18,14 @@ const Header = ({ settings }) => {
 
   const [headerTitles, setHeaderTitles] = useState();
 
-  const [isCN, setIsCN] = useState(true);
-
   // const {locale} = useContext(LocaleContext);
 
   // const [_, setLocaleContext] = locale
 
   const locale = useSelector((state) => state.locale.value);
   const dispatch = useDispatch();
+
+  const [isCN, setIsCN] = useState(locale === DEFAULT_LOCALE);
 
   const [isDisplayDropDown, setIsDisplayDropDown] = useState(false);
 
@@ -49,7 +49,7 @@ const Header = ({ settings }) => {
         .then((res) => {
           const jsonObj = JSON.parse(res);
 
-          jsonObj.data.items.length > 0 &&
+          jsonObj.data?.items.length > 0 &&
             setHeaderTitles(jsonObj.data.items[0].fields);
         })
         .catch((err) => console.log(err));
@@ -116,23 +116,21 @@ const Header = ({ settings }) => {
                   type="checkbox"
                   value={isCN}
                   onChange={() => setIsCN(!isCN)}
-                  className="h-8 w-16 cursor-pointer appearance-none rounded-full bg-red-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black"
+                  className="h-8 w-20 cursor-pointer appearance-none rounded-full bg-red-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black"
                 />
                 <span className="absolute right-1 p-1 text-xs font-medium uppercase text-white">
                   {" "}
-                  CN{" "}
+                  中文{" "}
                 </span>
-                <span className="absolute right-8 p-1 text-xs font-medium uppercase text-white">
+                <span className="absolute right-10 p-1 text-xs font-medium uppercase text-white">
                   {" "}
                   EN{" "}
                 </span>
                 <span
-                  className={`h-8 w-8 ${isCN ? "right-8" : "left-8"} absolute transform rounded-full bg-gray-200 transition-transform`}
+                  className={`h-10 w-10 ${isCN ? "right-10" : "left-10"} absolute transform rounded-full bg-gray-200 transition-transform`}
                 />
               </label>
-              <div>
-                <Link href="/login">Login/Sign up</Link>
-              </div>
+              <div>{/* <Link href="/login">Login/Sign up</Link> */}</div>
             </div>
           </nav>
           <div
