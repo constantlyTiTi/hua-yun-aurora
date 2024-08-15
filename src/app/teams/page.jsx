@@ -11,11 +11,12 @@ const Page = () => {
   const locale = useSelector((state) => state.locale.value);
 
   useEffect(() => {
-    getNews(locale).then((res) => {
-      const newsdata = JSON.parse(res).data?.items;
-      setNews(newsdata);
-    });
-  }, []);
+    locale &&
+      getNews(locale).then((res) => {
+        const newsdata = JSON.parse(res).data?.items;
+        setNews(newsdata);
+      });
+  }, [locale]);
 
   return (
     news && (
