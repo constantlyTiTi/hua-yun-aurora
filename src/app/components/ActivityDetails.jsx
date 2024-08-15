@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
+import { useSelector } from "react-redux";
 
 import { getActivityPageSetting } from "@/app/api/getContentful";
 
@@ -19,9 +20,11 @@ const ActivityDetails = ({
 
   const [imageIndex, setImageIndex] = useState();
 
+  const locale = useSelector((state) => state.locale.value);
+
   useEffect(() => {
     document.body.style.overflow = "unset";
-    getActivityPageSetting().then((res) => {
+    getActivityPageSetting(locale).then((res) => {
       const jsonObj = JSON.parse(res);
 
       jsonObj.data.items.length > 0 && setSetting(jsonObj.data.items[0].fields);

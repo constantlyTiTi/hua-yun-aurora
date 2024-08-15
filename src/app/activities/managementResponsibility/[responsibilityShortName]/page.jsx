@@ -3,14 +3,17 @@ import React, { useState, useEffect } from "react";
 
 import { getActivityByResponsiblity } from "@/app/api/getContentful";
 import ActivityCard from "@/app/components/ActivityCard";
+import { useSelector } from "react-redux";
 
 const Page = ({ params }) => {
   const responsibilityShortName = params.responsibilityShortName;
 
   const [activities, setActivities] = useState();
 
+  const locale = useSelector((state) => state.locale.value);
+
   useEffect(() => {
-    getActivityByResponsiblity(responsibilityShortName)
+    getActivityByResponsiblity(responsibilityShortName, locale)
       .then((res) => {
         const jsonObj = JSON.parse(res);
 

@@ -9,7 +9,7 @@ const connectContentful = () => {
   });
 };
 
-const getWebSetting = () => {
+const getWebSetting = (locale) => {
   const client = connectContentful();
 
   return client
@@ -17,12 +17,13 @@ const getWebSetting = () => {
       content_type: "websiteSetting",
       select: "fields",
       order: "-fields.version",
+      locale: locale,
     })
     .then((res) => ({ data: res }))
     .catch((err) => ({ error: err }));
 };
 
-const getAuthSetting = () => {
+const getAuthSetting = (locale) => {
   const client = connectContentful();
 
   return client
@@ -30,12 +31,13 @@ const getAuthSetting = () => {
       content_type: "authenticationPageSetUp",
       select: "fields",
       order: "-fields.version",
+      locale: locale,
     })
     .then((res) => ({ data: res }))
     .catch((err) => ({ error: err }));
 };
 
-const getIntroduction = () => {
+const getIntroduction = (locale) => {
   const client = connectContentful();
 
   return client
@@ -43,12 +45,13 @@ const getIntroduction = () => {
       content_type: "introduction",
       select: "fields",
       order: "-fields.version",
+      locale: locale,
     })
-    .then((res) => ({ data: res }))
-    .catch((err) => ({ error: err }));
+    .then((res) => JSON.stringify({ data: res }))
+    .catch((err) => JSON.stringify({ error: err }));
 };
 
-const getOrganizationManagementTeamMembers = () => {
+const getOrganizationManagementTeamMembers = (locale) => {
   const client = connectContentful();
 
   return client
@@ -56,12 +59,13 @@ const getOrganizationManagementTeamMembers = () => {
       content_type: "organizationManagementTeamMember",
       select: "fields",
       order: "fields.order",
+      locale: locale,
     })
     .then((res) => JSON.stringify({ data: res }))
     .catch((err) => JSON.stringify({ error: err }));
 };
 
-const getTeamPageHeaders = () => {
+const getTeamPageHeaders = (locale) => {
   const client = connectContentful();
 
   return client
@@ -69,12 +73,13 @@ const getTeamPageHeaders = () => {
       content_type: "teamPageHeaderSetting",
       select: "fields",
       order: "-fields.version",
+      locale: locale,
     })
     .then((res) => JSON.stringify({ data: res }))
     .catch((err) => JSON.stringify({ error: err }));
 };
 
-const getActivityPageSetting = () => {
+const getActivityPageSetting = (locale) => {
   const client = connectContentful();
 
   return client
@@ -82,12 +87,13 @@ const getActivityPageSetting = () => {
       content_type: "activitiesPageHeaderSetting",
       select: "fields",
       order: "-fields.version",
+      locale: locale,
     })
     .then((res) => JSON.stringify({ data: res }))
     .catch((err) => JSON.stringify({ error: err }));
 };
 
-const getParentTeams = () => {
+const getParentTeams = (locale) => {
   const client = connectContentful();
 
   return client
@@ -95,13 +101,13 @@ const getParentTeams = () => {
       content_type: "teams",
       select: "fields",
       order: "fields.order",
+      locale: locale,
     })
     .then((res) => JSON.stringify({ data: res }))
     .catch((err) => JSON.stringify({ error: err }));
 };
 
-const getLevel2Teams = (parentTeamName) => {
-  console.log("parentTeamName", parentTeamName);
+const getLevel2Teams = (parentTeamName, locale) => {
   const client = connectContentful();
 
   return client
@@ -110,12 +116,13 @@ const getLevel2Teams = (parentTeamName) => {
       select: "fields",
       order: "fields.order",
       "fields.parentTeam[match]": parentTeamName,
+      locale: locale,
     })
     .then((res) => JSON.stringify({ data: res }))
     .catch((err) => JSON.stringify({ error: err }));
 };
 
-const getTeamByTeamName = (teamNameShort) => {
+const getTeamByTeamName = (teamNameShort, locale) => {
   const client = connectContentful();
 
   return client
@@ -124,12 +131,13 @@ const getTeamByTeamName = (teamNameShort) => {
       select: "fields",
       order: "fields.order",
       "fields.teamNameShort[match]": teamNameShort,
+      locale: locale,
     })
     .then((res) => JSON.stringify({ data: res }))
     .catch((err) => JSON.stringify({ error: err }));
 };
 
-const getLevel2TeamByTeamName = (teamNameShort) => {
+const getLevel2TeamByTeamName = (teamNameShort, locale) => {
   const client = connectContentful();
 
   return client
@@ -138,12 +146,13 @@ const getLevel2TeamByTeamName = (teamNameShort) => {
       select: "fields",
       order: "fields.order",
       "fields.teamNameShort[match]": teamNameShort,
+      locale: locale,
     })
     .then((res) => JSON.stringify({ data: res }))
     .catch((err) => JSON.stringify({ error: err }));
 };
 
-const getActivities = (teamNameShort) => {
+const getActivities = (teamNameShort, locale) => {
   const client = connectContentful();
 
   return client
@@ -152,21 +161,22 @@ const getActivities = (teamNameShort) => {
       select: "fields",
       order: "-fields.dateTime",
       "fields.teamNamesShort[match]": teamNameShort,
+      locale: locale,
     })
     .then((res) => JSON.stringify({ data: res }))
     .catch((err) => JSON.stringify({ error: err }));
 };
 
-const getActivityById = (activityId) => {
+const getActivityById = (activityId, locale) => {
   const client = connectContentful();
 
   return client
-    .getEntry(activityId)
+    .getEntry({ entry_id: activityId, locale: locale })
     .then((res) => JSON.stringify({ data: res }))
     .catch((err) => JSON.stringify({ error: err }));
 };
 
-const getNews = () => {
+const getNews = (locale) => {
   const client = connectContentful();
 
   return client
@@ -174,24 +184,26 @@ const getNews = () => {
       content_type: "news",
       select: "fields",
       order: "-fields.dateTime",
+      locale: locale,
     })
     .then((res) => JSON.stringify({ data: res }))
     .catch((err) => JSON.stringify({ error: err }));
 };
 
-const getManagementLevelResponsiblities = () => {
+const getManagementLevelResponsiblities = (locale) => {
   const client = connectContentful();
 
   return client
     .getEntries({
       content_type: "managementLevelResponsibilities",
       select: "fields",
+      locale: locale,
     })
     .then((res) => JSON.stringify({ data: res }))
     .catch((err) => JSON.stringify({ error: err }));
 };
 
-const getActivityByResponsiblity = (responsibilityShortName) => {
+const getActivityByResponsiblity = (responsibilityShortName, locale) => {
   const client = connectContentful();
 
   return client
@@ -200,6 +212,7 @@ const getActivityByResponsiblity = (responsibilityShortName) => {
       select: "fields",
       order: "-fields.dateTime",
       "fields.responsibilityShortName[match]": responsibilityShortName,
+      locale: locale,
     })
     .then((res) => JSON.stringify({ data: res }))
     .catch((err) => JSON.stringify({ error: err }));
