@@ -127,8 +127,10 @@ const Header = ({ settings }) => {
                   EN{" "}
                 </span>
                 <span
-                  className={`h-10 w-10 ${isCN ? "right-10" : "left-10"} absolute transform rounded-full bg-gray-200 transition-transform`}
-                />
+                  className={`h-10 w-10 ${isCN ? "left-10" : "right-10"} absolute transform rounded-full bg-gray-200 pt-3 text-center text-xs font-medium uppercase transition-transform`}
+                >
+                  {isCN ? "中文" : "EN"}{" "}
+                </span>
               </label>
               <div>{/* <Link href="/login">Login/Sign up</Link> */}</div>
             </div>
