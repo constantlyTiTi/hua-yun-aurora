@@ -24,6 +24,7 @@ const SubTeamPage = ({ params }) => {
 
   useEffect(() => {
     searchItem &&
+      locale &&
       getLevel2TeamByTeamName(searchItem, locale)
         .then((res) => {
           const jsonObj = JSON.parse(res);
@@ -34,6 +35,7 @@ const SubTeamPage = ({ params }) => {
         .catch((error) => console.log(error));
 
     searchItem &&
+      locale &&
       getActivities(searchItem, locale)
         .then((res) => {
           const jsonObj = JSON.parse(res);
@@ -41,12 +43,14 @@ const SubTeamPage = ({ params }) => {
         })
         .catch((error) => console.log(error));
 
-    getTeamPageHeaders(locale).then((res) => {
-      const jsonObj = JSON.parse(res);
+    locale &&
+      getTeamPageHeaders(locale).then((res) => {
+        const jsonObj = JSON.parse(res);
 
-      jsonObj.data.items.length > 0 && setHeader(jsonObj.data.items[0].fields);
-    });
-  }, [searchItem]);
+        jsonObj.data.items.length > 0 &&
+          setHeader(jsonObj.data.items[0].fields);
+      });
+  }, [searchItem, locale]);
 
   return (
     team &&

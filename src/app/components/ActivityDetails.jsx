@@ -24,12 +24,15 @@ const ActivityDetails = ({
 
   useEffect(() => {
     document.body.style.overflow = "unset";
-    getActivityPageSetting(locale).then((res) => {
-      const jsonObj = JSON.parse(res);
+    if (locale) {
+      getActivityPageSetting(locale).then((res) => {
+        const jsonObj = JSON.parse(res);
 
-      jsonObj.data.items.length > 0 && setSetting(jsonObj.data.items[0].fields);
-    });
-  }, []);
+        jsonObj.data.items.length > 0 &&
+          setSetting(jsonObj.data.items[0].fields);
+      });
+    }
+  }, [locale]);
 
   const imageOnClick = (index) => {
     setImageIndex(index);
