@@ -17,11 +17,13 @@ const OrgManagementIntro = () => {
     if (locale) {
       getOrganizationManagementTeamMembers(locale).then((res) => {
         const membersData = JSON.parse(res);
+        console.log("member", membersData?.data?.items);
         membersData?.data?.items && setTeamMemembers(membersData?.data?.items);
       });
 
       getManagementLevelResponsiblities(locale).then((res) => {
         const resp = JSON.parse(res);
+        console.log("respo", resp?.data?.items);
         resp?.data?.items && setResponsiblities(resp?.data?.items);
       });
     }
@@ -55,25 +57,28 @@ const OrgManagementIntro = () => {
               {documentToReactComponents(member.fields.description)}
             </div>
             <div key={`cardContentResponsibilites-${index}`} className="mt-5">
-              {responsibilites?.map(
-                (res, index) =>
-                  res.fields.staffNames?.find(
-                    (name) => name === member.fields.memberName,
-                  ) && (
-                    <Link
-                      key={`responsibilityLink-${index}`}
-                      href={`/activities/managementResponsibility/${res.fields.responsibilityShortName}`}
-                      className="inline-flex items-center justify-center rounded-lg bg-gray-50 p-5 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                    >
-                      <span
-                        key={`responsibilityLinkSpan-${index}`}
-                        className="w-full"
+              {member.fields.memberName &&
+                responsibilites?.map(
+                  (res, index) =>
+                    res.fields.staffNames?.find(
+                      (name) =>
+                        name.trim().toLowerCase() ===
+                        member.fields.memberName.trim().toLowerCase(),
+                    ) && (
+                      <Link
+                        key={`responsibilityLink-${index}`}
+                        href={`/activities/managementResponsibility/${res.fields.responsibilityShortName}`}
+                        className="inline-flex items-center justify-center rounded-lg bg-gray-50 p-5 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                       >
-                        {res.fields.responsibilityName}
-                      </span>
-                    </Link>
-                  ),
-              )}
+                        <span
+                          key={`responsibilityLinkSpan-${index}`}
+                          className="w-full"
+                        >
+                          {res.fields.responsibilityName}
+                        </span>
+                      </Link>
+                    ),
+                )}
             </div>
           </div>
 
