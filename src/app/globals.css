@@ -46,3 +46,8 @@ h1{
   margin: 2%;
 }
 
+#newsDetailCollapse > * button{
+  min-height: 56px !important;
+  height: auto !important;
+}
+
