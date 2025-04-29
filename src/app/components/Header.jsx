@@ -166,7 +166,7 @@ const Header = ({ settings }) => {
             >
               <div className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                 {" "}
-                Home
+                {isCN ? "主页" : "Home"}
               </div>
             </Link>
 
